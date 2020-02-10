@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>210</y>
+      <w>180</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>User
+--
+accountNumber: {id}
+name: Name
+address: Addess
+username: String {id}
+password: String
+email: String
+orderHistory: History [0..*]
+currentCart: Cart</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>420</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Admin
+--
+isAnAdmin: Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>80</x>
+      <y>370</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>50</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Name
+--
+firstName: String
+middleInitial: Char
+lastName: String
+--
+getFullName()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>150</x>
+      <y>30</y>
+      <w>130</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>Address
+--
+houseNumber: Int
+streetName: String
+state: String
+zipCode: Int
+country: String
+--
+getFullAddress()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>130</x>
+      <y>150</y>
+      <w>90</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>290</x>
+      <y>20</y>
+      <w>160</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>Product
+--
+UPC: Int {id}
+name: String
+description: String
+price: Float
+onSale: Boolean
+salePrice: Float
+onHands: Int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>140</y>
+      <w>70</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1420</x>
+      <y>70</y>
+      <w>230</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Note..
+User only has 2 minutes
+to checkout after viewing checkout
+bg=white</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1380</x>
+      <y>580</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>OrderHistory
+--
+~orders: List&lt;Order&gt;
+--
++getOrders()
++getSpecificOrder(String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1370</x>
+      <y>220</y>
+      <w>510</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>Order
+--
+subTotal: Int
+tax: Int
+total: Int
+itemsWithPrices: List&lt;Items&gt;
+invoiceNumber: Int
+orderStatus: OrderStatus
+orderTImeAndDate: DateAndTime
+--
++createOrderFromCart(subTotal : Int, tax : Int, total : Int, items : List&lt;Products&gt;)
++getSubTotal()
++getTax()
++getTotal()
+~generateInvoiceNumber()
++saveOrderToAccount()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>250</y>
+      <w>230</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Cart
+--
+~currentItemsInCart: List&lt;Product&gt;
+~currentCartSubTotal: Float
+~currentTax: Float
+~currentTotal: Float
+--
++switchToProcessOrder()
++clearCart()
++getCartShareID()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>110</y>
+      <w>90</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*Search*
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1070</x>
+      <y>180</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+*Search*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>120</y>
+      <w>620</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=0</panel_attributes>
+    <additional_attributes>600.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1060</x>
+      <y>130</y>
+      <w>80</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>60.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>290</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>180</x>
+      <y>360</y>
+      <w>640</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>580.0;10.0;580.0;80.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>250</y>
+      <w>340</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Login
+--
+~username: String
+~password: String
+--
++logUserIn() : boolean
++changeUserPassword(password : String) : Boolean
++forgotUserPassword(email : String) : Boolean</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>250</y>
+      <w>220</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Home
+--
+currentUserLoggedIn: Int
+--
++switchToSearch()
++switchToCart()
++switchToAccountInformation()
++accessWarehouse()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>590</x>
+      <y>290</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1970</x>
+      <y>200</y>
+      <w>120</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;enumaration&gt;&gt;
+*OrderStatus*
+--
+InProgress
+Cancelled
+Fulfilled</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1870</x>
+      <y>250</y>
+      <w>120</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>100.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>300</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>890</x>
+      <y>190</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1230</x>
+      <y>300</y>
+      <w>160</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>780</x>
+      <y>460</y>
+      <w>390</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>AccountInformation
+--
+~orders: OrderHistory
+~accountId: Int
+--
++updateAddress(address : Address)
++updateEmail(email : String)
++updatePassword(password : String, newPassword : String)
++getOrderStatus(orderId : String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>780</x>
+      <y>360</y>
+      <w>100</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1160</x>
+      <y>480</y>
+      <w>240</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>220.0;130.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1550</x>
+      <y>460</y>
+      <w>150</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+    <additional_attributes>130.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+</diagram>
