@@ -113,7 +113,7 @@ isAnAdmin: Boolean
     <coordinates>
       <x>490</x>
       <y>140</y>
-      <w>330</w>
+      <w>340</w>
       <h>310</h>
     </coordinates>
     <panel_attributes>Product
@@ -121,17 +121,17 @@ isAnAdmin: Boolean
 ~productId: Int {id}
 ~name: String
 ~description: String
-~price: Float
+~price: Double
 ~onSale: Boolean
-~salePrice: Float
+~salePrice: Double
 ~onHands: Int
 --
 +getProductId()
 +getName()
 +getDescription()
-+setPrice(price : Float)
++setPrice(price : Double)
 +getPrice()
-+putOnSale(isOnSale : Boolean, salePrice : Float)
++putOnSale(isOnSale : Boolean, salePrice : Double)
 +isOnSale()
 +getSalePrice()
 +setOnHands(onHands : Int)
@@ -169,8 +169,8 @@ bg=white</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1580</x>
-      <y>740</y>
+      <x>1590</x>
+      <y>710</y>
       <w>200</w>
       <h>80</h>
     </coordinates>
@@ -187,20 +187,20 @@ bg=white</panel_attributes>
     <coordinates>
       <x>1530</x>
       <y>370</y>
-      <w>510</w>
+      <w>590</w>
       <h>250</h>
     </coordinates>
     <panel_attributes>Order
 --
-subTotal: Int
-tax: Int
-total: Int
+subTotal: Double
+tax: Double
+total: Double
 products: List&lt;Product&gt;
 invoiceNumber: Int
 orderStatus: OrderStatus
 orderTImeAndDate: DateAndTime
 --
-+createOrderFromCart(subTotal : Int, tax : Int, total : Int, items : List&lt;Products&gt;)
++createOrderFromCart(items : List&lt;Products&gt;, subTotal : Double, tax : Double, total : Double)
 +getSubTotal()
 +getTax()
 +getTotal()
@@ -211,21 +211,22 @@ orderTImeAndDate: DateAndTime
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1190</x>
+      <x>1230</x>
       <y>400</y>
       <w>230</w>
-      <h>150</h>
+      <h>160</h>
     </coordinates>
     <panel_attributes>Cart
 --
 ~currentItemsInCart: List&lt;Product&gt;
-~currentCartSubTotal: Float
-~currentTax: Float
-~currentTotal: Float
+~currentCartSubTotal: Double
+~currentTax: Double
+~currentTotal: Double
 --
 +switchToProcessOrder()
 +clearCart()
-+getCartShareID()</panel_attributes>
++addItemToCart(product : Product)
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -255,15 +256,15 @@ orderTImeAndDate: DateAndTime
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
+      <x>820</x>
       <y>240</y>
-      <w>210</w>
+      <w>200</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=*
 m2=0</panel_attributes>
-    <additional_attributes>190.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -313,9 +314,9 @@ m2=0</panel_attributes>
 ~username: String
 ~password: String
 --
-+logUserIn() : Boolean
-+changeUserPassword(password : String) : Boolean
-+forgotUserPassword(email : String) : Boolean</panel_attributes>
++logUserIn()
++forgotUserName(email: String)
++forgotUserPassword(email : String)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -328,7 +329,7 @@ m2=0</panel_attributes>
     </coordinates>
     <panel_attributes>Home
 --
-~currentUserLoggedIn: Int
+~currentUserLoggedIn: User
 --
 +switchToSearch()
 +switchToCart()
@@ -351,8 +352,8 @@ m2=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2120</x>
-      <y>440</y>
+      <x>2200</x>
+      <y>450</y>
       <w>120</w>
       <h>100</h>
     </coordinates>
@@ -367,7 +368,7 @@ Fulfilled</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2030</x>
+      <x>2110</x>
       <y>480</y>
       <w>110</w>
       <h>40</h>
@@ -380,37 +381,37 @@ Fulfilled</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1120</x>
-      <y>450</y>
-      <w>90</w>
-      <h>80</h>
+      <y>440</y>
+      <w>130</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>70.0;60.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1030</x>
       <y>340</y>
-      <w>90</w>
+      <w>70</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;40.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1410</x>
+      <x>1450</x>
       <y>450</y>
-      <w>140</w>
+      <w>100</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -437,36 +438,36 @@ Fulfilled</panel_attributes>
     <coordinates>
       <x>980</x>
       <y>500</y>
-      <w>120</w>
+      <w>70</w>
       <h>230</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;210.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1410</x>
-      <y>730</y>
-      <w>190</w>
-      <h>60</h>
+      <y>720</y>
+      <w>200</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>170.0;40.0;100.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>180.0;20.0;100.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1770</x>
+      <x>1780</x>
       <y>610</y>
-      <w>160</w>
-      <h>200</h>
+      <w>180</w>
+      <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>130.0;10.0;70.0;160.0;10.0;180.0</additional_attributes>
+    <additional_attributes>120.0;10.0;120.0;150.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -491,7 +492,7 @@ tbd</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;280.0;60.0;190.0;100.0;10.0</additional_attributes>
+    <additional_attributes>10.0;280.0;100.0;160.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>

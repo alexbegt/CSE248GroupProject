@@ -21,3 +21,36 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#Remove OS generated garbage
+*/.DS_Store
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+/design
+/classes/
+#custom
+*.tmp
+/out
+
+#eclipse stuffs
+/.classpath
+/.project
+/.settings/
+/eclipse/
+/debug/
+*.lock
+/.metadata/
+
+#IDEA files
+.idea/
+/*.iml
+/*.ipr
+/*.iws
+#Vim backups
+*~
