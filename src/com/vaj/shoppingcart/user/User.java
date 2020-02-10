@@ -62,16 +62,25 @@ public class User {
   /*
    * Sets the user's order history to the new order history.
    *
-   * @param orderHistoryIn the order history
+   * @param orderHistoryIn the order history.
    */
   public void setOrderHistory(OrderHistory orderHistoryIn) {
     this.orderHistory = orderHistoryIn;
   }
 
   /*
+   * Get's the order history of the account
+   *
+   * @return The order history.
+   */
+  public OrderHistory getOrderHistory() {
+    return this.orderHistory;
+  }
+
+  /*
   * Sets the cart set on the user's account
   *
-  * @param cartIn the cart used
+  * @param cartIn the cart used.
    */
   public void setCart(Cart cartIn) {
     this.currentCart = cartIn;
@@ -80,7 +89,7 @@ public class User {
   /*
   * Get's the current cart linked to the user
   *
-  * @returns the users current cart
+  * @returns the users current cart.
    */
   public Cart getCurrentCart() {
     return this.cart;
@@ -88,8 +97,8 @@ public class User {
 
   /*
   * Get's the status of the current account
-  * 
-  * @return The account status. It will either be ACTIVE, INACTIVE, OR CLOSED
+  *
+  * @return The account status. It will either be ACTIVE, INACTIVE, OR CLOSED.
    */
   public AccountStatus getAccountStatus() {
     return this.accountStatus;
