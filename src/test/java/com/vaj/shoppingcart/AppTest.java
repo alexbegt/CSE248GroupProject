@@ -11,4 +11,9 @@ public class AppTest {
         App classUnderTest = new App();
         assertNotNull("app should have a greeting", classUnderTest.getGreeting());
     }
+    
+    @Test public void testAppHasNoGreeting() {
+        App classUnderTest = new App();
+        assertNull("app shouldn't have a greeting", classUnderTest.getGreeting());
+    }
 }
