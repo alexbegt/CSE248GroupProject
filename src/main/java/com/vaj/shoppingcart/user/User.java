@@ -13,7 +13,7 @@ public class User {
   private AccountStatus accountStatus;
 
   public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn) {
-    this.accountId = Global.ACCOUNTID++;
+    this.accountId = Database.ACCOUNTID++;
     this.name = nameIn;
     this.address = addressIn;
     this.username = usernameIn;
@@ -84,7 +84,7 @@ public class User {
    * @param cartIn the cart used.
    */
   public void setCart(Cart cartIn) {
-    this.currentCart = cartIn;
+    this.cart = cartIn;
   }
 
   /*
