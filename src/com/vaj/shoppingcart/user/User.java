@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.user;
 
 public class User {
+
   private final int accountId;
   private final Name name;
   private final Address address;
@@ -78,27 +79,27 @@ public class User {
   }
 
   /*
-  * Sets the cart set on the user's account
-  *
-  * @param cartIn the cart used.
+   * Sets the cart set on the user's account
+   *
+   * @param cartIn the cart used.
    */
   public void setCart(Cart cartIn) {
     this.currentCart = cartIn;
   }
 
   /*
-  * Get's the current cart linked to the user
-  *
-  * @returns the users current cart.
+   * Get's the current cart linked to the user
+   *
+   * @returns the users current cart.
    */
   public Cart getCurrentCart() {
     return this.cart;
   }
 
   /*
-  * Get's the status of the current account
-  *
-  * @return The account status. It will either be ACTIVE, INACTIVE, OR CLOSED.
+   * Get's the status of the current account
+   *
+   * @return The account status. It will either be ACTIVE, INACTIVE, OR CLOSED.
    */
   public AccountStatus getAccountStatus() {
     return this.accountStatus;

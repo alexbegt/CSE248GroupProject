@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.user;
 
 public class Address {
+
   private final int houseNumber;
   private final String streetName;
   private final String state;
@@ -20,6 +21,6 @@ public class Address {
   }
 
   public String getFullAddress() {
-    return this.houseNumber + " " + this.streetName  + " " + this.state + " , " + this.country + " " + this.zipCode;
+    return this.houseNumber + " " + this.streetName + " " + this.state + " , " + this.country + " " + this.zipCode;
   }
 }

@@ -1,6 +1,6 @@
 package com.vaj.shoppingcart.user;
 
-public enum  AccountStatus {
+public enum AccountStatus {
   ACTIVE,
   INACTIVE,
   CLOSED;

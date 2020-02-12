@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.user;
 
 public class Name {
+
   private final String firstName;
   private final char middleInitial;
   private final String lastName;
