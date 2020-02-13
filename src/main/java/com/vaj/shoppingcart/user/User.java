@@ -11,8 +11,9 @@ public class User {
   private OrderHistory orderHistory;
   private Cart cart;
   private AccountStatus accountStatus;
+  private AccountType accountType;
 
-  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn) {
+  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
     this.accountId = Database.ACCOUNTID++;
     this.name = nameIn;
     this.address = addressIn;
@@ -22,6 +23,7 @@ public class User {
     this.orderHistory = new OrderHistory();
     this.cart = new Cart();
     this.accountStatus = AccountStatus.ACTIVE;
+    this.accountType = accountTypeIn;
   }
 
   /*
@@ -103,6 +105,24 @@ public class User {
    */
   public AccountStatus getAccountStatus() {
     return this.accountStatus;
+  }
+
+  /*
+   * Sets the account type of the selected user
+   *
+   * @param accountTypeIn the cart used.
+   */
+  public void setAccountType(AccountType accountTypeIn) {
+    this.accountType = accountTypeIn;
+  }
+
+  /*
+   * Get's the account type of the current account
+   *
+   * @return The account type. It will either be USER or ADMIN.
+   */
+  public AccountType getAccountType() {
+    return this.accountType;
   }
 }
 
