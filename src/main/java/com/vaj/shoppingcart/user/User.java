@@ -2,7 +2,11 @@ package com.vaj.shoppingcart.user;
 
 public class User {
 
-  private final int accountId;
+  
+
+
+
+private final int accountId;
   private final Name name;
   private final Address address;
   private final String username;
@@ -12,6 +16,7 @@ public class User {
   private Cart cart;
   private AccountStatus accountStatus;
   private AccountType accountType;
+
 
   public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
     this.accountId = Database.ACCOUNTID++;
