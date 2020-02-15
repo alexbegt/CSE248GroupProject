@@ -2,7 +2,11 @@ package com.vaj.shoppingcart.user;
 
 public class User {
 
-  private final int accountId;
+  
+
+
+
+private final int accountId;
   private final Name name;
   private final Address address;
   private final String username;
@@ -11,9 +15,11 @@ public class User {
   private OrderHistory orderHistory;
   private Cart cart;
   private AccountStatus accountStatus;
+  private AccountType accountType;
 
-  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn) {
-    this.accountId = Global.ACCOUNTID++;
+
+  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
+    this.accountId = Database.ACCOUNTID++;
     this.name = nameIn;
     this.address = addressIn;
     this.username = usernameIn;
@@ -22,6 +28,7 @@ public class User {
     this.orderHistory = new OrderHistory();
     this.cart = new Cart();
     this.accountStatus = AccountStatus.ACTIVE;
+    this.accountType = accountTypeIn;
   }
 
   /*
@@ -84,7 +91,7 @@ public class User {
    * @param cartIn the cart used.
    */
   public void setCart(Cart cartIn) {
-    this.currentCart = cartIn;
+    this.cart = cartIn;
   }
 
   /*
@@ -103,6 +110,24 @@ public class User {
    */
   public AccountStatus getAccountStatus() {
     return this.accountStatus;
+  }
+
+  /*
+   * Sets the account type of the selected user
+   *
+   * @param accountTypeIn the cart used.
+   */
+  public void setAccountType(AccountType accountTypeIn) {
+    this.accountType = accountTypeIn;
+  }
+
+  /*
+   * Get's the account type of the current account
+   *
+   * @return The account type. It will either be USER or ADMIN.
+   */
+  public AccountType getAccountType() {
+    return this.accountType;
   }
 }
 
