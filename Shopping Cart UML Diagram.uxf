@@ -7,7 +7,7 @@
       <x>20</x>
       <y>350</y>
       <w>440</w>
-      <h>320</h>
+      <h>420</h>
     </coordinates>
     <panel_attributes>User
 --
@@ -25,10 +25,16 @@
 +getAccountId()
 +getName()
 +getAddress()
++getUsername()
++setPassword(encryptedPassword : String)
++getPassword()
++setEmail(email : String)
 +getEmail()
 +setCart(cart : Cart)
-+getCurrentCart()
++getCart()
++setAccountStatus(accountStatus : AccountStatus) 
 +getAccountStatus()
++setAccountType(accountType : AccountType)
 +getAccountType()</panel_attributes>
     <additional_attributes/>
   </element>
@@ -94,7 +100,7 @@
     </coordinates>
     <panel_attributes>Product
 --
-~productId: Int {id}
+~productIdentifier: Int {id}
 ~name: String
 ~description: String
 ~price: Double
@@ -102,7 +108,7 @@
 ~onHands: Int
 ~productStatus: ProductStatus
 --
-+getProductId()
++getProductIdentifier()
 +getName()
 +getDescription()
 +setPrice(price : Double)
@@ -148,7 +154,7 @@ bg=white</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1600</x>
+      <x>1560</x>
       <y>710</y>
       <w>200</w>
       <h>80</h>
@@ -417,24 +423,24 @@ Fulfilled</panel_attributes>
     <coordinates>
       <x>1420</x>
       <y>720</y>
-      <w>200</w>
+      <w>160</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>180.0;20.0;100.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>140.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1790</x>
+      <x>1750</x>
       <y>610</y>
-      <w>180</w>
+      <w>220</w>
       <h>170</h>
     </coordinates>
     <panel_attributes>lt=&lt;..
 &lt;&lt;uses&gt;&gt;</panel_attributes>
-    <additional_attributes>120.0;10.0;120.0;150.0;10.0;150.0</additional_attributes>
+    <additional_attributes>160.0;10.0;160.0;150.0;10.0;150.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -479,8 +485,8 @@ bg=white</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>980</x>
-      <y>880</y>
+      <x>870</x>
+      <y>950</y>
       <w>160</w>
       <h>70</h>
     </coordinates>
@@ -492,13 +498,13 @@ bg=white</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>980</x>
+      <x>870</x>
       <y>850</y>
-      <w>90</w>
-      <h>50</h>
+      <w>200</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

@@ -2,11 +2,7 @@ package com.vaj.shoppingcart.user;
 
 public class User {
 
-  
-
-
-
-private final int accountId;
+  private final int accountId;
   private final Name name;
   private final Address address;
   private final String username;
@@ -16,7 +12,6 @@ private final int accountId;
   private Cart cart;
   private AccountStatus accountStatus;
   private AccountType accountType;
-
 
   public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
     this.accountId = Database.ACCOUNTID++;
@@ -56,6 +51,42 @@ private final int accountId;
    */
   public Address getAddress() {
     return this.address;
+  }
+
+  /*
+   * Get's the username of the selected user.
+   *
+   * @return the username associated with the user's account.
+   */
+  public String getUsername() {
+    return this.username;
+  }
+
+  /*
+   * Sets the user's encrypted password to a new encrypted Password.
+   *
+   * @param passwordIn the new password.
+   */
+  public void setPassword(String passwordIn) {
+    this.password = passwordIn;
+  }
+
+  /*
+   * Get's the encrypted password saved to the user account.
+   *
+   * @return the encrypted password.
+   */
+  public String getPassword() {
+    return this.password;
+  }
+
+  /*
+   * Sets the user's email to a new email.
+   *
+   * @param emailIn the new email.
+   */
+  public void setEmail(String emailIn) {
+    this.email = emailIn;
   }
 
   /*
@@ -99,8 +130,17 @@ private final int accountId;
    *
    * @returns the users current cart.
    */
-  public Cart getCurrentCart() {
+  public Cart getCart() {
     return this.cart;
+  }
+
+  /*
+   * Sets the account status of the selected user
+   *
+   * @param accountStatusIn the account status.
+   */
+  public void setAccountStatus(AccountStatus accountStatusIn) {
+    this.accountStatus = accountStatusIn;
   }
 
   /*
@@ -115,7 +155,7 @@ private final int accountId;
   /*
    * Sets the account type of the selected user
    *
-   * @param accountTypeIn the cart used.
+   * @param accountTypeIn the account type.
    */
   public void setAccountType(AccountType accountTypeIn) {
     this.accountType = accountTypeIn;
