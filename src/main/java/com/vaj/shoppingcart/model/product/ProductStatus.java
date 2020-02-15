@@ -1,4 +1,4 @@
-package com.vaj.shoppingcart.product;
+package com.vaj.shoppingcart.model.product;
 
 public enum ProductStatus {
   SELLABLE,

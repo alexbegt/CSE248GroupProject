@@ -1,4 +1,7 @@
-package com.vaj.shoppingcart.user;
+package com.vaj.shoppingcart.model.account;
+
+import com.vaj.shoppingcart.Database;
+import com.vaj.shoppingcart.model.order.OrderHistory;
 
 public class User {
 
@@ -14,7 +17,7 @@ public class User {
   private AccountType accountType;
 
   public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
-    this.accountId = Database.ACCOUNTID++;
+    this.accountId = Database.ACCOUNT_ID++;
     this.name = nameIn;
     this.address = addressIn;
     this.username = usernameIn;

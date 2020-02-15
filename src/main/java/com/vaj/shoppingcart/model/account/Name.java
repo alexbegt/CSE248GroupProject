@@ -1,4 +1,4 @@
-package com.vaj.shoppingcart.user;
+package com.vaj.shoppingcart.model.account;
 
 public class Name {
 
@@ -25,6 +25,10 @@ public class Name {
   }
 
   public String getFullName() {
-    return this.firstName + " " + this.middleInitial + " " + this.lastName;
+    if (this.middleInitial == Character.UNASSIGNED) {
+      return this.firstName + " " + this.lastName;
+    } else {
+      return this.firstName + " " + this.middleInitial + " " + this.lastName;
+    }
   }
 }

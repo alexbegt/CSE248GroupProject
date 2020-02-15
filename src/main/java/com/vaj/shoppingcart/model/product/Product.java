@@ -1,4 +1,6 @@
-package com.vaj.shoppingcart.product;
+package com.vaj.shoppingcart.model.product;
+
+import com.vaj.shoppingcart.Database;
 
 public class Product {
 
@@ -11,7 +13,7 @@ public class Product {
   private ProductStatus productStatus;
 
   public Product(String name, String description, double price, int onHands) {
-    this.productIdentifier = Database.PRODUCTID++;
+    this.productIdentifier = Database.PRODUCT_ID++;
     this.name = name;
     this.description = description;
     this.price = price;

@@ -1,4 +1,4 @@
-package com.vaj.shoppingcart.user;
+package com.vaj.shoppingcart.model.order;
 
 import java.util.HashMap;
 
