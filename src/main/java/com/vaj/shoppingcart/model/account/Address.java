@@ -2,18 +2,16 @@ package com.vaj.shoppingcart.model.account;
 
 public class Address {
 
-  private final int houseNumber;
-  private final String streetName;
+  private final String address;
+  private final String city;
   private final String state;
   private final String zipCode;
-  private final String country;
 
-  public Address(int houseNumberIn, String streetNameIn, String stateIn, String zipCodeIn, String countryIn) {
-    this.houseNumber = houseNumberIn;
-    this.streetName = streetNameIn;
+  public Address(String addressIn, String cityIn, String stateIn, String zipCodeIn) {
+    this.address = addressIn;
+    this.city = cityIn;
     this.state = stateIn;
     this.zipCode = zipCodeIn;
-    this.country = countryIn;
   }
 
   public String getZipCode() {
@@ -21,6 +19,6 @@ public class Address {
   }
 
   public String getFullAddress() {
-    return this.houseNumber + " " + this.streetName + " " + this.state + " , " + this.country + " " + this.zipCode;
+    return this.address + " " + this.city + ", " +  this.state + " " + this.zipCode;
   }
 }

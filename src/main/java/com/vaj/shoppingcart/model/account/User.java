@@ -15,8 +15,9 @@ public class User {
   private Cart cart;
   private AccountStatus accountStatus;
   private AccountType accountType;
+  private String passwordSalt;
 
-  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String emailIn, AccountType accountTypeIn) {
+  public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String passwordSaltIn, String emailIn, AccountType accountTypeIn) {
     this.accountId = Database.ACCOUNT_ID++;
     this.name = nameIn;
     this.address = addressIn;
@@ -27,6 +28,7 @@ public class User {
     this.cart = new Cart();
     this.accountStatus = AccountStatus.ACTIVE;
     this.accountType = accountTypeIn;
+    this.passwordSalt = passwordSaltIn;
   }
 
   /*
@@ -81,6 +83,24 @@ public class User {
    */
   public String getPassword() {
     return this.password;
+  }
+
+  /*
+   * Sets the user's password salt to a new password salt.
+   *
+   * @param passwordSaltIn the new password salt.
+   */
+  public void setPasswordSalt(String passwordSaltIn) {
+    this.passwordSalt = passwordSaltIn;
+  }
+
+  /*
+   * Get's the password salt saved to the user account.
+   *
+   * @return the password salt.
+   */
+  public String getPasswordSalt() {
+    return this.passwordSalt;
   }
 
   /*
