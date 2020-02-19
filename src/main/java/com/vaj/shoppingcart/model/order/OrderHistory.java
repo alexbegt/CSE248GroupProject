@@ -15,6 +15,10 @@ public class OrderHistory {
   public void setOrder(ArrayList<Order> orders) {
     this.orders = orders;
   }
+  
+  public void addOrder(Order order) {
+	  orders.add(order);
+  }
 
   public ArrayList<Order> getOrders() {
     return orders;

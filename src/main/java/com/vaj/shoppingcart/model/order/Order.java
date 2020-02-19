@@ -3,69 +3,49 @@ package com.vaj.shoppingcart.model.order;
 import java.util.HashMap;
 
 public class Order {
-	private double subTotal;
-	private double tax;
-	private double total;
-	private HashMap<String, Integer> products;
-	private int invoiceNumber;
+	private final double subTotal;
+	private final double tax;
+	private final double total;
+	private HashMap<String, Integer> cartProducts;
+	public static int INVOICE_NUMBER = 0;
 	private OrderStatus orderStatus;
-	private DateAndTime orderDateAndTime;
+
 	
-	public Order(double subTotal, double tax, double total, HashMap<String, Integer> products, int invoiceNumber,
-			OrderStatus orderStatus, DateAndTime orderDateAndTime) {
+	public Order(double subTotal, HashMap<String, Integer> cartProducts) {
 		super();
 		this.subTotal = subTotal;
-		this.tax = tax;
-		this.total = total;
-		this.products = products;
-		this.invoiceNumber = invoiceNumber;
-		this.orderStatus = orderStatus;
-		this.orderDateAndTime = orderDateAndTime;
+		this.tax = subTotal * (8.25/100);
+		this.total = subTotal + tax;
+		this.cartProducts = cartProducts;
+		this.orderStatus = OrderStatus.PENDING;
 	}
 
 	public float generateInvoiceNumber() {
-		//this method will generate a unique random number x numbers long
-		return invoiceNumber;
-		
+		return INVOICE_NUMBER++;
 	}
+
 	public double getSubTotal() {
 		return subTotal;
-	}
-
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
-	}
-
-	public double getTax() {
-		return tax;
-	}
-
-	public void setTax(double tax) {
-		this.tax = tax;
 	}
 
 	public double getTotal() {
 		return total;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
 	public HashMap<String, Integer> getProducts() {
-		return products;
+		return cartProducts;
 	}
 
 	public void setProducts(HashMap<String, Integer> products) {
-		this.products = products;
+		this.cartProducts = products;
 	}
 
 	public int getInvoiceNumber() {
-		return invoiceNumber;
+		return INVOICE_NUMBER;
 	}
 
 	public void setInvoiceNumber(int invoiceNumber) {
-		this.invoiceNumber = invoiceNumber;
+		this.INVOICE_NUMBER = invoiceNumber;
 	}
 
 	public OrderStatus getOrderStatus() {
@@ -76,13 +56,7 @@ public class Order {
 		this.orderStatus = orderStatus;
 	}
 
-	public DateAndTime getOrderDateAndTime() {
-		return orderDateAndTime;
-	}
-
-	public void setOrderDateAndTime(DateAndTime orderDateAndTime) {
-		this.orderDateAndTime = orderDateAndTime;
-	}
+	
 	
 	
 }
