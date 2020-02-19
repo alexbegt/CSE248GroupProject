@@ -6,17 +6,17 @@ public class Order {
 	private final double subTotal;
 	private final double tax;
 	private final double total;
-	private HashMap<String, Integer> products;
+	private HashMap<String, Integer> cartProducts;
 	public static int INVOICE_NUMBER = 0;
 	private OrderStatus orderStatus;
 
 	
-	public Order(double subTotal, HashMap<String, Integer> products) {
+	public Order(double subTotal, HashMap<String, Integer> cartProducts) {
 		super();
 		this.subTotal = subTotal;
 		this.tax = subTotal * (8.25/100);
 		this.total = subTotal + tax;
-		this.products = products;
+		this.cartProducts = cartProducts;
 		this.orderStatus = OrderStatus.PENDING;
 	}
 
@@ -33,11 +33,11 @@ public class Order {
 	}
 
 	public HashMap<String, Integer> getProducts() {
-		return products;
+		return cartProducts;
 	}
 
 	public void setProducts(HashMap<String, Integer> products) {
-		this.products = products;
+		this.cartProducts = products;
 	}
 
 	public int getInvoiceNumber() {
