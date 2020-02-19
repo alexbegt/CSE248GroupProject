@@ -6,10 +6,10 @@ public class OrderHistory {
 
   private ArrayList<Order> orders;
 
-  public ArrayList<Order> getSpecificOrder(int orderNumber) {
+  public Order getSpecificOrder(int orderNumber) {
     //retrieves order number from order list
     //gets specific order
-
+    return this.orders.get(orderNumber);
   }
 
   public void setOrder(ArrayList<Order> orders) {

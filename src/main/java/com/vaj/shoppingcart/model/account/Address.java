@@ -14,11 +14,21 @@ public class Address {
     this.zipCode = zipCodeIn;
   }
 
+  /*
+   * Get's the zip code of the given address class
+   *
+   * @return String, the zip code
+   */
   public String getZipCode() {
     return this.zipCode;
   }
 
+  /*
+  * Get's the full address of the given address class
+  *
+  * @return String, the full address
+   */
   public String getFullAddress() {
-    return this.address + " " + this.city + ", " +  this.state + " " + this.zipCode;
+    return this.address + " " + this.city + ", " + this.state + " " + this.zipCode;
   }
 }

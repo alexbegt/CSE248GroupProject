@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.model.account;
 
-import com.vaj.shoppingcart.Database;
+import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.model.database.Database;
 import com.vaj.shoppingcart.model.order.OrderHistory;
 
 public class User {

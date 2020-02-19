@@ -10,12 +10,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UserAccountTest {
+public class DatabaseTestor {
 
   User user;
   Name test_bot_name;
   Address test_bot_address;
   String passwordSalt;
+
+  ShoppingCart cart = new ShoppingCart();
 
   @BeforeEach
   public void initEach() {
@@ -23,6 +25,8 @@ class UserAccountTest {
     this.test_bot_address = new Address("20 Testing Street", "Test", "Test", "1337");
     this.passwordSalt = AccountHelper.generateRandomPasswordSalt().get();
     this.user = new User(this.test_bot_name, this.test_bot_address, "test", AccountHelper.generateEncryptedPassword("test", this.passwordSalt).get(), this.passwordSalt, "test@test.com", AccountType.USER);
+
+    cart.getDatabase().addUser(this.user);
   }
 
   @Test
@@ -31,18 +35,7 @@ class UserAccountTest {
   }
 
   @Test
-  public void testUserAddress() {
-    assertThat(this.user.getAddress()).isEqualTo(this.test_bot_address);
+  public void findUser() {
+    assertThat(ShoppingCart.getInstance().getDatabase().findUser("test")).isTrue();
   }
-
-  @Test
-  public void testUserPasswordSalt() {
-    assertThat(this.user.getPasswordSalt()).isEqualTo(this.passwordSalt);
-  }
-
-  @Test
-  public void testUserPassword() {
-    assertThat(this.user.getPassword()).isEqualTo(AccountHelper.generateEncryptedPassword("test", this.passwordSalt).get());
-  }
-
 }
