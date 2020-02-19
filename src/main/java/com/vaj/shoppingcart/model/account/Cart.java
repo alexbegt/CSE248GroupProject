@@ -15,10 +15,6 @@ public class Cart {
 		
 	}
 	
-	public void switchToProcessOrder() {
-		//Need to write the switch from screens or whatever we're doing with this
-	}
-	
 	public void clearCart() {
 		currentItemsInCart.clear();
 	}
