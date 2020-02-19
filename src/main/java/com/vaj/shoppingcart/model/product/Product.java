@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.model.product;
 
-import com.vaj.shoppingcart.Database;
+import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.model.database.Database;
 
 public class Product {
 

@@ -38,6 +38,8 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
     testImplementation 'org.mockito:mockito-core:3.1.0'
     testImplementation 'org.assertj:assertj-core:3.14.0'
+    testImplementation "org.testfx:testfx-core:4.0.16-alpha"
+    testImplementation "org.testfx:testfx-junit5:4.0.16-alpha"
 }
 
 javafx {
@@ -47,7 +49,7 @@ javafx {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'com.vaj.shoppingcart.App'
+    mainClassName = 'com.vaj.shoppingcart.ShoppingCart'
 }
 
 test {

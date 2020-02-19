@@ -1,4 +1,4 @@
-package com.vaj.shoppingcart.controller;
+package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.model.login.ResetStatus;

@@ -7,9 +7,17 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public class PasswordHelper {
+public class AccountHelper {
 
   private static final SecureRandom RAND = new SecureRandom();
 
@@ -56,5 +64,30 @@ public class PasswordHelper {
   public static boolean verifyPassword(String password, String key, String salt) {
     Optional<String> optEncrypted = generateEncryptedPassword(password, salt);
     return optEncrypted.map(s -> s.equals(key)).orElse(false);
+  }
+
+  public static boolean validateEmail(String email) {
+    Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+    Matcher m = p.matcher(email);
+
+    return !m.find() || !m.group().equals(email);
+  }
+
+  public static String generateSecureRandomPassword() {
+    String capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    String lowercase = "abcdefghijklmnopqrstuvwxyz";
+    String numbers = "0123456789";
+    String symbols = "!@#$%^&*_=+-/.?<>)";
+    String values = capitals + lowercase + numbers + symbols;
+
+    Random rndm_method = new Random();
+
+    char[] password = new char[10];
+
+    for (int i = 0; i < 10; i++) {
+      password[i] = values.charAt(rndm_method.nextInt(values.length()));
+    }
+
+    return password.toString();
   }
 }
