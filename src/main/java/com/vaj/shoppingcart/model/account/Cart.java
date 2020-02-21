@@ -37,7 +37,7 @@ public class Cart {
 	
 	public boolean removeItemFromCart(String name) {
 		Product product = ShoppingCart.getInstance().getDatabase().getProduct(name);
-		if(product != null) {
+		if(product != null && currentItemsInCart.contains(name)) {
 			currentCartSubTotal -= product.getPrice();
 			currentTax -= product.getPrice() * 0.08625;
 			currentTotal = (currentCartSubTotal + currentTax);
