@@ -1,5 +1,6 @@
 package com.vaj.shoppingcart;
 
+import com.vaj.shoppingcart.helper.FileHelper;
 import com.vaj.shoppingcart.model.database.Database;
 import com.vaj.shoppingcart.model.login.LoginAndRegister;
 import javafx.application.Application;
@@ -8,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 public class ShoppingCart extends Application {
 
@@ -49,7 +51,19 @@ public class ShoppingCart extends Application {
     primaryStage.setScene(scene);
     primaryStage.setResizable(false);
     primaryStage.show();
+    
+    primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
+
+    FileHelper.loadUsersAndProducts(this, "files/users.json", "files/products.json");
+    
   }
+  
+  /**
+   * @param when window is closed, it saves info.
+   */
+  private void closeWindowEvent(WindowEvent event) {
+	    FileHelper.saveUsersAndProducts(this, "files/users.json", "files/products.json");
+	  }
 
   /**
    * @param args the command line arguments
