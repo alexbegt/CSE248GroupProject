@@ -1,30 +1,42 @@
 package com.vaj.shoppingcart.model.product;
 
-import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.model.database.Database;
 
 public class Product {
 
   private final int productIdentifier;
+  private final String shortName;
   private final String name;
   private final String description;
   private double price;
   private double salePrice;
   private int onHands;
   private ProductStatus productStatus;
+  private String photoPath;
 
-  public Product(String name, String description, double price, int onHands) {
+  public Product(String shortName, String name, String description, double price, int onHands, String photoPath) {
     this.productIdentifier = Database.PRODUCT_ID++;
+    this.shortName = shortName;
     this.name = name;
     this.description = description;
     this.price = price;
     this.salePrice = 0.00;
     this.onHands = onHands;
     this.productStatus = ProductStatus.SELLABLE;
+    this.photoPath = photoPath;
   }
 
   /*
-   * Get's the product ID of the current product.
+   * Gets the short name of the current product.
+   *
+   * @return the product short name.
+   */
+  public String getShortName() {
+    return this.shortName;
+  }
+
+  /*
+   * Gets the product ID of the current product.
    *
    * @return the product ID.
    */
@@ -33,7 +45,7 @@ public class Product {
   }
 
   /*
-   * Get's the name of the current product.
+   * Gets the name of the current product.
    *
    * @return the product name.
    */
@@ -42,7 +54,7 @@ public class Product {
   }
 
   /*
-   * Get's the description of the current product.
+   * Gets the description of the current product.
    *
    * @return the product description.
    */
@@ -55,7 +67,7 @@ public class Product {
   }
 
   /*
-   * Get's the price of the current product.
+   * Gets the price of the current product.
    *
    * @return the product price.
    */
@@ -92,7 +104,7 @@ public class Product {
   }
 
   /*
-   * Get's the current sale price of the selected item.
+   * Gets the current sale price of the selected item.
    * Note this can be 0.00 which means the item is not on sale.
    *
    * @return the product sale price.
@@ -111,7 +123,7 @@ public class Product {
   }
 
   /*
-   * Get's the current on hands of the selected product.
+   * Gets the current on hands of the selected product.
    *
    * @return the product on hands.
    */
@@ -122,7 +134,7 @@ public class Product {
   /*
    * Sets the current product status
    *
-   * @param productStatusIn the new on hands.
+   * @param productStatusIn the new product status.
    */
   public void setProductStatus(ProductStatus productStatusIn) {
     this.productStatus = productStatusIn;
@@ -134,11 +146,29 @@ public class Product {
   }
 
   /*
-   * Get's the current product status linked to the selected item.
+   * Gets the current product status linked to the selected item.
    *
    * @return The product status. It will either be SELLABLE, DISCONTINUED, CLEARANCE, or SALVAGE.
    */
   public ProductStatus getProductStatus() {
     return this.productStatus;
+  }
+
+  /*
+   * Sets the current product photo
+   *
+   * @param photoPathIn the new photo.
+   */
+  public void setPhotoPath(String photoPathIn) {
+    this.photoPath = photoPathIn;
+  }
+
+  /*
+   * Gets the current product photo linked to the selected item.
+   *
+   * @return The path of the current photo to display for the selected item.
+   */
+  public String getPhotoPath() {
+    return this.photoPath;
   }
 }
