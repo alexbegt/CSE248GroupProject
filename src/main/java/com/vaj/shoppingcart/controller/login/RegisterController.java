@@ -62,7 +62,7 @@ public class RegisterController implements Initializable {
       Stage stage = (Stage) node.getScene().getWindow();
       stage.close();
 
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login.fxml")));
+      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/login.fxml")));
       stage.setScene(scene);
       stage.setResizable(false);
       stage.show();

@@ -19,6 +19,14 @@ public class LoginAndRegister {
     this.shoppingCart = mainClassIn;
   }
 
+  /*
+  * Logs the user in with the given username and password if the user exists, and their password matches.
+  *
+  * @param username the entered username by the user
+  * @param password the entered password by the user
+  *
+  * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
+   */
   public LoginStatus logUserIn(String username, String password) {
     if (!this.shoppingCart.getDatabase().findUser(username)) {
       return LoginStatus.INVALID_USER;
@@ -39,6 +47,18 @@ public class LoginAndRegister {
     return LoginStatus.SUCCESS;
   }
 
+  /*
+   * Registers a user if it does not exist.
+   *
+   * @param name the entered name by the user
+   * @param address the entered address by the user
+   * @param username the entered username by the user
+   * @param passwordIn the entered password by the user
+   * @param confirmPasswordIn the entered password by the user
+   * @param email the entered email by the user
+   *
+   * @return RegisterStatus the status returned (INVALID_EMAIL, ERROR_GENERATING_PASSWORD_HASH, ERROR_ENCRYPTING_PASSWORD, PASSWORDS_DO_NOT_MATCH, USERNAME_IN_USE, EMAIL_IN_USE, SUCCESSFUL, ERROR)
+   */
   public RegisterStatus registerUser(Name name, Address address, String username, String passwordIn, String confirmPasswordIn, String email) {
     if (AccountHelper.validateEmail(email)) {
       return RegisterStatus.INVALID_EMAIL;
@@ -71,6 +91,13 @@ public class LoginAndRegister {
     }
   }
 
+  /*
+   * Resets the user's passwords
+   *
+   * @param username the entered username by the user
+   *
+   * @return Pair<ResetStatus, String> the status returned (INVALID_EMAIL, ACCOUNT_DISABLED, INVALID_USER, ERROR_GENERATING_PASSWORD_SALT, ERROR_ENCRYPTING_PASSWORD, SUCCESS) along with the username.
+   */
   public Pair<ResetStatus, String> forgotPassword(String username) {
     if (!this.shoppingCart.getDatabase().findUser(username)) {
       return new Pair<>(ResetStatus.INVALID_USER, "");
@@ -99,6 +126,13 @@ public class LoginAndRegister {
     return new Pair<>(ResetStatus.SUCCESS, randomPassword);
   }
 
+  /*
+   * Gets the user's username if its exists
+   *
+   * @param email the entered email by the user
+   *
+   * @return Pair<ResetStatus, String> the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, SUCCESS) along with the username.
+   */
   public Pair<ResetStatus, String> forgotUsername(String email) {
     if (!this.shoppingCart.getDatabase().findAnyUserWithEmail(email)) {
       return new Pair<>(ResetStatus.INVALID_USER, "");

@@ -25,8 +25,8 @@
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btnSubmit" layoutX="248.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../styling/shopping_cart_styling.css" text="Submit" />
-            <Button fx:id="btnCancel" layoutX="23.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../styling/shopping_cart_styling.css" text="Cancel" />
+            <Button fx:id="btnSubmit" layoutX="248.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Submit" />
+            <Button fx:id="btnCancel" layoutX="23.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Cancel" />
             <TextField fx:id="txtEmail" layoutX="135.0" layoutY="14.0" prefHeight="34.0" prefWidth="184.0" promptText="email" />
          </children>
       </Pane>

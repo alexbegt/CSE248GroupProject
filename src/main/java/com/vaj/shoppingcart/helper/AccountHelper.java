@@ -1,5 +1,9 @@
 package com.vaj.shoppingcart.helper;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
@@ -7,15 +11,10 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class AccountHelper {
 
@@ -89,5 +88,22 @@ public class AccountHelper {
     }
 
     return password.toString();
+  }
+
+  public static void createDialog(String message, String windowName) {
+    TextArea textArea = new TextArea(message);
+    textArea.setEditable(false);
+    textArea.setWrapText(true);
+    textArea.setPrefSize(250, 50);
+
+    GridPane gridPane = new GridPane();
+    gridPane.setPrefSize(250, 50);
+    gridPane.add(textArea, 0, 0);
+
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle(windowName);
+    alert.setHeaderText(null);
+    alert.getDialogPane().setContent(gridPane);
+    alert.show();
   }
 }

@@ -12,8 +12,9 @@ public class Product {
   private double salePrice;
   private int onHands;
   private ProductStatus productStatus;
+  private String photoPath;
 
-  public Product(String shortName, String name, String description, double price, int onHands) {
+  public Product(String shortName, String name, String description, double price, int onHands, String photoPath) {
     this.productIdentifier = Database.PRODUCT_ID++;
     this.shortName = shortName;
     this.name = name;
@@ -22,6 +23,7 @@ public class Product {
     this.salePrice = 0.00;
     this.onHands = onHands;
     this.productStatus = ProductStatus.SELLABLE;
+    this.photoPath = photoPath;
   }
 
   /*
@@ -132,7 +134,7 @@ public class Product {
   /*
    * Sets the current product status
    *
-   * @param productStatusIn the new on hands.
+   * @param productStatusIn the new product status.
    */
   public void setProductStatus(ProductStatus productStatusIn) {
     this.productStatus = productStatusIn;
@@ -150,5 +152,23 @@ public class Product {
    */
   public ProductStatus getProductStatus() {
     return this.productStatus;
+  }
+
+  /*
+   * Sets the current product photo
+   *
+   * @param photoPathIn the new photo.
+   */
+  public void setPhotoPath(String photoPathIn) {
+    this.photoPath = photoPathIn;
+  }
+
+  /*
+   * Gets the current product photo linked to the selected item.
+   *
+   * @return The path of the current photo to display for the selected item.
+   */
+  public String getPhotoPath() {
+    return this.photoPath;
   }
 }
