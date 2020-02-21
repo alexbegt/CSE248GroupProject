@@ -20,29 +20,31 @@ public class Cart {
 	}
 	
 	public void clearCart() {
-		while(!currentItemsInCart.isEmpty()) {
-			currentItemsInCart.remove(0);
-			}
-		}
-	
-	public void addItemToCart(String product) {
-		if(ShoppingCart.getInstance().getDatabase().getProduct(product) != null) {
-			ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice();
-			currentCartSubTotal += ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice();
-			currentTax += ((ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice()) * 0.08625);
-			currentTotal = (currentCartSubTotal + currentTax);
-			currentItemsInCart.add(product);
-		}
+		currentItemsInCart.clear();
 	}
 	
-	public void removeItemFromCart(String product) {
-		if(ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice()) {
-			ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice();
-			currentCartSubTotal -= ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice();
-			currentTax -= (ShoppingCart.getInstance().getDatabase().getProduct(product).getPrice() * 0.08625);
+	public boolean addItemToCart(String name) {
+		Product product = ShoppingCart.getInstance().getDatabase().getProduct(name);
+		if(product != null) {
+			currentCartSubTotal += product.getPrice();
+			currentTax += product.getPrice() * 0.08625;
 			currentTotal = (currentCartSubTotal + currentTax);
-			currentItemsInCart.remove(product);
+			currentItemsInCart.add(name);
+			return true;
 		}
+		return false;
+	}
+	
+	public boolean removeItemFromCart(String name) {
+		Product product = ShoppingCart.getInstance().getDatabase().getProduct(name);
+		if(product != null) {
+			currentCartSubTotal -= product.getPrice();
+			currentTax -= product.getPrice() * 0.08625;
+			currentTotal = (currentCartSubTotal + currentTax);
+			currentItemsInCart.remove(name);
+			return true;
+		}
+		return false;
 	}
 	
 	public double getCurrentCartSubTotal() {
