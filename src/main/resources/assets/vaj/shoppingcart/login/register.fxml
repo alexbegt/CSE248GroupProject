@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="442.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.login.RegisterController">
    <children>
       <AnchorPane prefHeight="76.0" prefWidth="600.0" style="-fx-background-color: #000000;">
@@ -27,13 +26,13 @@
                   <Font name="Segoe UI" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btnSignUp" layoutX="279.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#handleCompleteSignUp" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../styling/shopping_cart_styling.css" text="Sign Up" />
-            <Button fx:id="btnCancel" layoutX="39.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../styling/shopping_cart_styling.css" text="Cancel" />
-            <TextField fx:id="txtUsername" layoutX="39.0" layoutY="66.0" prefHeight="34.0" prefWidth="184.0" promptText="username" />
-            <TextField fx:id="txtEmail" layoutX="39.0" layoutY="224.0" prefHeight="34.0" prefWidth="184.0" promptText="email" />
-            <PasswordField fx:id="txtPassword" layoutX="39.0" layoutY="119.0" prefHeight="34.0" prefWidth="184.0" promptText="password" />
-            <PasswordField fx:id="txtConfirmPassword" layoutX="39.0" layoutY="174.0" prefHeight="34.0" prefWidth="184.0" promptText="confirm password" />
+            <Button fx:id="btnSignUp" layoutX="279.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#handleCompleteSignUp" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Sign Up" />
+            <Button fx:id="btnCancel" layoutX="39.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Cancel" />
             <TextField fx:id="txtFirstName" layoutX="39.0" layoutY="14.0" prefHeight="34.0" prefWidth="184.0" promptText="First Name" />
+            <TextField fx:id="txtUsername" layoutX="39.0" layoutY="66.0" prefHeight="34.0" prefWidth="184.0" promptText="Username" />
+            <PasswordField fx:id="txtPassword" layoutX="39.0" layoutY="119.0" prefHeight="34.0" prefWidth="184.0" promptText="Password" />
+            <PasswordField fx:id="txtConfirmPassword" layoutX="39.0" layoutY="174.0" prefHeight="34.0" prefWidth="184.0" promptText="Confirm Password" />
+            <TextField fx:id="txtEmail" layoutX="39.0" layoutY="224.0" prefHeight="34.0" prefWidth="184.0" promptText="Email" />
             <TextField fx:id="txtLastName" layoutX="279.0" layoutY="14.0" prefHeight="34.0" prefWidth="184.0" promptText="Last Name" />
             <TextField fx:id="txtAddress" layoutX="279.0" layoutY="66.0" prefHeight="34.0" prefWidth="184.0" promptText="Address" />
             <TextField fx:id="txtCity" layoutX="279.0" layoutY="119.0" prefHeight="34.0" prefWidth="184.0" promptText="City" />

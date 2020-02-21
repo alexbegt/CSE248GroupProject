@@ -15,7 +15,7 @@ public class Address {
   }
 
   /*
-   * Get's the zip code of the given address class
+   * Gets the zip code of the given address class
    *
    * @return String, the zip code
    */
@@ -24,7 +24,7 @@ public class Address {
   }
 
   /*
-  * Get's the full address of the given address class
+  * Gets the full address of the given address class
   *
   * @return String, the full address
    */

@@ -1,7 +1,6 @@
 package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
-import com.vaj.shoppingcart.model.login.ResetStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 import java.io.IOException;
 import java.net.URL;
@@ -44,7 +42,7 @@ public class LoginController implements Initializable {
       Stage stage = (Stage) node.getScene().getWindow();
       stage.close();
 
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/forgotpassword.fxml")));
+      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/forgotpassword.fxml")));
       stage.setScene(scene);
       stage.setResizable(false);
       stage.show();
@@ -61,7 +59,7 @@ public class LoginController implements Initializable {
       Stage stage = (Stage) node.getScene().getWindow();
       stage.close();
 
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/forgotusername.fxml")));
+      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/forgotusername.fxml")));
       stage.setScene(scene);
       stage.setResizable(false);
       stage.show();
@@ -79,7 +77,7 @@ public class LoginController implements Initializable {
     if (username.isEmpty() || password.isEmpty()) {
       this.setErrorText(Color.TOMATO, "Empty credentials");
     } else {
-      switch (ShoppingCart.getInstance().getLoginAndRegister().logUserIn(username,password)) {
+      switch (ShoppingCart.getInstance().getLoginAndRegister().logUserIn(username, password)) {
         case SUCCESS:
           this.setErrorText(Color.GREEN, "Successful! Logging in...");
           break;
@@ -106,7 +104,7 @@ public class LoginController implements Initializable {
       Stage stage = (Stage) node.getScene().getWindow();
       stage.close();
 
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/register.fxml")));
+      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/register.fxml")));
       stage.setScene(scene);
       stage.setResizable(false);
       stage.show();

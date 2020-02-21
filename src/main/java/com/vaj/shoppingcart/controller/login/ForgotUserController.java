@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.helper.AccountHelper;
 import com.vaj.shoppingcart.model.login.ResetStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,6 +49,7 @@ public class ForgotUserController implements Initializable {
           break;
         case SUCCESS:
           this.setErrorText(Color.GREEN, "Your account name is: " + forgotUsername.getValue());
+          AccountHelper.createDialog("Your account name is: " + forgotUsername.getValue(), "Forgot Username");
           break;
         case ERROR:
           this.setErrorText(Color.TOMATO, "Unknown error.");
@@ -63,7 +65,7 @@ public class ForgotUserController implements Initializable {
       Stage stage = (Stage) node.getScene().getWindow();
       stage.close();
 
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login.fxml")));
+      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/login.fxml")));
       stage.setScene(scene);
       stage.setResizable(false);
       stage.show();
@@ -71,12 +73,6 @@ public class ForgotUserController implements Initializable {
     } catch (IOException ex) {
       System.err.println(ex.getMessage());
     }
-  }
-
-  private void setErrorText(Color color, String text) {
-    lblErrors.setTextFill(color);
-    lblErrors.setText(text);
-    System.out.println("Forgot User: " + text);
   }
 
   /**
@@ -92,4 +88,9 @@ public class ForgotUserController implements Initializable {
 
   }
 
+  private void setErrorText(Color color, String text) {
+    lblErrors.setTextFill(color);
+    lblErrors.setText(text);
+    System.out.println("Forgot User: " + text);
+  }
 }
