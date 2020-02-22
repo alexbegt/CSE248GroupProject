@@ -20,12 +20,12 @@ public class LoginAndRegister {
   }
 
   /*
-  * Logs the user in with the given username and password if the user exists, and their password matches.
-  *
-  * @param username the entered username by the user
-  * @param password the entered password by the user
-  *
-  * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
+   * Logs the user in with the given username and password if the user exists, and their password matches.
+   *
+   * @param username the entered username by the user
+   * @param password the entered password by the user
+   *
+   * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
    */
   public LoginStatus logUserIn(String username, String password) {
     if (!this.shoppingCart.getUserDatabase().findUser(username)) {

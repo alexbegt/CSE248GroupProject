@@ -4,23 +4,25 @@ import java.util.ArrayList;
 
 public class OrderHistory {
 
-  private ArrayList<Order> orders;
+  private ArrayList<Integer> orders;
 
-  public Order getSpecificOrder(int orderNumber) {
-    //retrieves order number from order list
-    //gets specific order
+  public OrderHistory() {
+    this.orders = new ArrayList<>();
+  }
+
+  public Integer getSpecificOrder(int orderNumber) {
     return this.orders.get(orderNumber);
   }
 
-  public void setOrder(ArrayList<Order> orders) {
+  public void setOrder(ArrayList<Integer> orders) {
     this.orders = orders;
   }
-  
-  public void addOrder(Order order) {
-	  orders.add(order);
+
+  public void addOrder(int order) {
+    orders.add(order);
   }
 
-  public ArrayList<Order> getOrders() {
+  public ArrayList<Integer> getOrders() {
     return orders;
   }
 

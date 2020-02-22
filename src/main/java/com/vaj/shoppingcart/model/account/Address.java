@@ -24,9 +24,9 @@ public class Address {
   }
 
   /*
-  * Gets the full address of the given address class
-  *
-  * @return String, the full address
+   * Gets the full address of the given address class
+   *
+   * @return String, the full address
    */
   public String getFullAddress() {
     return this.address + " " + this.city + ", " + this.state + " " + this.zipCode;

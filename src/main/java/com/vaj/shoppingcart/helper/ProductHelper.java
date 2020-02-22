@@ -1,7 +1,5 @@
 package com.vaj.shoppingcart.helper;
 
-import javafx.util.Pair;
-
 public class ProductHelper {
 
   public static boolean validatePrice(String price) {

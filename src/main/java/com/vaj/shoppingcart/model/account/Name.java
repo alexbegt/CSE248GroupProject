@@ -11,7 +11,7 @@ public class Name {
   }
 
   /*
-   * Get's the first name of the given Name class.
+   * Gets the first name of the given Name class.
    *
    * @return String, the first name
    */
@@ -20,7 +20,7 @@ public class Name {
   }
 
   /*
-   * Get's the last name of the given Name class.
+   * Gets the last name of the given Name class.
    *
    * @return String, the last name
    */
@@ -29,7 +29,7 @@ public class Name {
   }
 
   /*
-   * Get's the full name of the given Name class.
+   * Gets the full name of the given Name class.
    *
    * @return String, the full name
    */

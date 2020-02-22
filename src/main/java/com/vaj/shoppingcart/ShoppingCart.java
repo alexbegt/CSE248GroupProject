@@ -7,7 +7,6 @@ import com.vaj.shoppingcart.model.database.ProductDatabase;
 import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.login.LoginAndRegister;
 import com.vaj.shoppingcart.model.product.AddOrEditProduct;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,12 +18,12 @@ import javafx.stage.WindowEvent;
 public class ShoppingCart extends Application {
 
   public static ShoppingCart instance;
-  public final LoginAndRegister loginAndRegister;
-  public final UserDatabase userDatabase;
-  public final ProductDatabase productDatabase;
-  public final InvoiceDatabase invoiceDatabase;
-  public final OrderDatabase orderDatabase;
-  public final AddOrEditProduct addOrEditProduct;
+  private final LoginAndRegister loginAndRegister;
+  private final UserDatabase userDatabase;
+  private final ProductDatabase productDatabase;
+  private final InvoiceDatabase invoiceDatabase;
+  private final OrderDatabase orderDatabase;
+  private final AddOrEditProduct addOrEditProduct;
 
   public ShoppingCart() {
     instance = this;
@@ -35,8 +34,6 @@ public class ShoppingCart extends Application {
     this.invoiceDatabase = new InvoiceDatabase(this);
     this.orderDatabase = new OrderDatabase(this);
     this.addOrEditProduct = new AddOrEditProduct(this);
-    
-    
   }
 
   /**
@@ -52,7 +49,7 @@ public class ShoppingCart extends Application {
    *                     the application scene can be set.
    *                     Applications may create other stages, if needed, but they will not be
    *                     primary stages.
-   * @throws Exception if something goes wrong
+   * @throws Exception if something goes wrong.
    */
   @Override
   public void start(Stage primaryStage) throws Exception {
@@ -66,20 +63,20 @@ public class ShoppingCart extends Application {
     primaryStage.setScene(scene);
     primaryStage.setResizable(false);
     primaryStage.show();
-    
+
     primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
 
-    FileHelper.loadUsersAndProducts(this, "files/users.json", "files/products.json");
+    FileHelper.loadAllDatabases(this, "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
   }
-  
+
   /**
    * When window is closed, save the user and products info.
    *
    * @param event the mouse event.
    */
   private void closeWindowEvent(WindowEvent event) {
-	    FileHelper.saveUsersAndProducts(this, "files/users.json", "files/products.json");
-	  }
+    FileHelper.saveAllDatabases(this, "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
+  }
 
   /**
    * @param args the command line arguments
@@ -88,44 +85,48 @@ public class ShoppingCart extends Application {
     launch(args);
   }
 
+  /*
+   * returns the instance of the shopping cart class.
+   */
   public static ShoppingCart getInstance() {
     return instance;
   }
 
   /*
-   * Returns the invoiceDatabase class to be used with a controller.
+   * Returns the Invoice Database class to be used with a controller.
    */
   public InvoiceDatabase getInvoiceDatabase() {
     return this.invoiceDatabase;
   }
-  
+
   /*
-   * Returns the userDatabase class to be used with a controller.
+   * Returns the User Database class to be used with a controller.
    */
   public UserDatabase getUserDatabase() {
     return this.userDatabase;
   }
-  
+
   /*
-   * Returns the productDatabase class to be used with a controller.
+   * Returns the Product Database class to be used with a controller.
    */
   public ProductDatabase getProductDatabase() {
     return this.productDatabase;
   }
-  
+
   /*
-   * Returns the orderDatabase class to be used with a controller.
+   * Returns the Order Database class to be used with a controller.
    */
   public OrderDatabase getOrderDatabase() {
     return this.orderDatabase;
   }
 
   /*
-  * Returns the Login and Register class to be used with a controller.
+   * Returns the Login and Register class to be used with a controller.
    */
   public LoginAndRegister getLoginAndRegister() {
     return this.loginAndRegister;
   }
+
   /*
    * Returns the Add or Edit Product class to be used with a controller.
    */

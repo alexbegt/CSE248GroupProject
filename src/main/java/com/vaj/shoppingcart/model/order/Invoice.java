@@ -1,37 +1,28 @@
 package com.vaj.shoppingcart.model.order;
 
-import com.vaj.shoppingcart.model.account.User;
 import com.vaj.shoppingcart.model.database.InvoiceDatabase;
 
 public class Invoice {
-	
-	private final int invoiceIdentifier;
-	public  Order order;
-	public User user;
-	
-	
-	public Invoice(Order order, User user) {
-		super();
-		this.order = order;
-		this.invoiceIdentifier = InvoiceDatabase.INVOICE_ID++;
-		this.user = user;
-	}
-	
 
-	public int getInvoiceIdentifier() {
-		return invoiceIdentifier;
-	}
+  private final int invoiceIdentifier;
+  private final int orderNumber;
+  private final String username;
 
+  public Invoice(int orderNumber, String username) {
+    this.invoiceIdentifier = InvoiceDatabase.INVOICE_ID++;
+    this.orderNumber = orderNumber;
+    this.username = username;
+  }
 
-	public Order getOrder() {
-		return order;
-	}
+  public int getInvoiceNumber() {
+    return this.invoiceIdentifier;
+  }
 
-	public void setOrder(Order order) {
-		this.order = order;
-	}
+  public int getOrderNumber() {
+    return this.orderNumber;
+  }
 
-	public User getUser() {
-		return user;
-	}
+  public String getUserName() {
+    return this.username;
+  }
 }

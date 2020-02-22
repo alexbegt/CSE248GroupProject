@@ -29,7 +29,6 @@ public class AccountHelper {
   }
 
   public static Optional<String> generateRandomPasswordSalt(final int length) {
-
     if (length < 1) {
       throw new AssertionError("error in generatePasswordSalt: length must be > 0");
     }

@@ -1,6 +1,5 @@
 package com.vaj.shoppingcart.model.account;
 
-import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.order.OrderHistory;
 
@@ -33,7 +32,7 @@ public class User {
   }
 
   /*
-   * Get's the account ID saved to the user account.
+   * Gets the account ID saved to the user account.
    *
    * @return the account ID associated with the user's account.
    */
@@ -42,7 +41,7 @@ public class User {
   }
 
   /*
-   * Get's the name saved to the user account.
+   * Gets the name saved to the user account.
    *
    * @return the name associated with the user's account.
    */
@@ -51,7 +50,7 @@ public class User {
   }
 
   /*
-   * Get's the address saved to the user account.
+   * Gets the address saved to the user account.
    *
    * @return the address associated with the user's account.
    */
@@ -60,7 +59,7 @@ public class User {
   }
 
   /*
-   * Get's the username of the selected user.
+   * Gets the username of the selected user.
    *
    * @return the username associated with the user's account.
    */
@@ -78,7 +77,7 @@ public class User {
   }
 
   /*
-   * Get's the encrypted password saved to the user account.
+   * Gets the encrypted password saved to the user account.
    *
    * @return the encrypted password.
    */
@@ -96,7 +95,7 @@ public class User {
   }
 
   /*
-   * Get's the password salt saved to the user account.
+   * Gets the password salt saved to the user account.
    *
    * @return the password salt.
    */
@@ -114,7 +113,7 @@ public class User {
   }
 
   /*
-   * Get's the email saved to the user account.
+   * Gets the email saved to the user account.
    *
    * @return the email associated with the user's account.
    */
@@ -132,7 +131,7 @@ public class User {
   }
 
   /*
-   * Get's the order history of the account
+   * Gets the order history of the account
    *
    * @return The order history.
    */
@@ -150,7 +149,7 @@ public class User {
   }
 
   /*
-   * Get's the current cart linked to the user
+   * Gets the current cart linked to the user
    *
    * @returns the users current cart.
    */
@@ -168,7 +167,7 @@ public class User {
   }
 
   /*
-   * Get's the status of the current account
+   * Gets the status of the current account
    *
    * @return The account status. It will either be ACTIVE, INACTIVE, OR CLOSED.
    */
@@ -186,7 +185,7 @@ public class User {
   }
 
   /*
-   * Get's the account type of the current account
+   * Gets the account type of the current account
    *
    * @return The account type. It will either be USER or ADMIN.
    */
