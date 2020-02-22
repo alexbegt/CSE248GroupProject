@@ -1,7 +1,7 @@
 package com.vaj.shoppingcart.model.account;
 
 import com.vaj.shoppingcart.ShoppingCart;
-import com.vaj.shoppingcart.model.database.Database;
+import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.order.OrderHistory;
 
 public class User {
@@ -19,7 +19,7 @@ public class User {
   private String passwordSalt;
 
   public User(Name nameIn, Address addressIn, String usernameIn, String passwordIn, String passwordSaltIn, String emailIn, AccountType accountTypeIn) {
-    this.accountId = Database.ACCOUNT_ID++;
+    this.accountId = UserDatabase.ACCOUNT_ID++;
     this.name = nameIn;
     this.address = addressIn;
     this.username = usernameIn;

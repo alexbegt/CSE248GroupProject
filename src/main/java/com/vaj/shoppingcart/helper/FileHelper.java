@@ -6,7 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.model.account.User;
-import com.vaj.shoppingcart.model.database.Database;
+import com.vaj.shoppingcart.model.database.ProductDatabase;
+import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.product.Product;
 
 import java.io.FileReader;
@@ -36,8 +37,8 @@ public class FileHelper {
     try {
       JsonObject json = gson.fromJson(new FileReader(filePath), JsonObject.class);
 
-      Database.ACCOUNT_ID = gson.fromJson(json.get("current_id"), Integer.class);
-      cart.getDatabase().setUserTreeMap(gson.fromJson(json.get("accounts"), userTreeMapType));
+      UserDatabase.ACCOUNT_ID = gson.fromJson(json.get("current_id"), Integer.class);
+      cart.getUserDatabase().setUserTreeMap(gson.fromJson(json.get("accounts"), userTreeMapType));
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -48,8 +49,8 @@ public class FileHelper {
       Writer writer = new FileWriter(filePath);
       JsonObject rootObject = new JsonObject();
 
-      rootObject.add("current_id", gson.toJsonTree(Database.ACCOUNT_ID));
-      rootObject.add("accounts", gson.toJsonTree(cart.getDatabase().getUserTreeMap(), userTreeMapType));
+      rootObject.add("current_id", gson.toJsonTree(UserDatabase.ACCOUNT_ID));
+      rootObject.add("accounts", gson.toJsonTree(cart.getUserDatabase().getUserTreeMap(), userTreeMapType));
 
       gson.toJson(rootObject, writer);
 
@@ -64,8 +65,8 @@ public class FileHelper {
     try {
       JsonObject json = gson.fromJson(new FileReader(filePath), JsonObject.class);
 
-      Database.PRODUCT_ID = gson.fromJson(json.get("current_id"), Integer.class);
-      cart.getDatabase().setProductTreeMap(gson.fromJson(json.get("products"), productTreeMapType));
+      ProductDatabase.PRODUCT_ID = gson.fromJson(json.get("current_id"), Integer.class);
+      cart.getProductDatabase().setProductTreeMap(gson.fromJson(json.get("products"), productTreeMapType));
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -76,8 +77,8 @@ public class FileHelper {
       Writer writer = new FileWriter(filePath);
       JsonObject rootObject = new JsonObject();
 
-      rootObject.add("current_id", gson.toJsonTree(Database.PRODUCT_ID));
-      rootObject.add("products", gson.toJsonTree(cart.getDatabase().getProductTreeMap(), productTreeMapType));
+      rootObject.add("current_id", gson.toJsonTree(ProductDatabase.PRODUCT_ID));
+      rootObject.add("products", gson.toJsonTree(cart.getProductDatabase().getProductTreeMap(), productTreeMapType));
 
       gson.toJson(rootObject, writer);
 

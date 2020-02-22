@@ -1,8 +1,13 @@
 package com.vaj.shoppingcart;
 
 import com.vaj.shoppingcart.helper.FileHelper;
-import com.vaj.shoppingcart.model.database.Database;
+import com.vaj.shoppingcart.model.database.InvoiceDatabase;
+import com.vaj.shoppingcart.model.database.OrderDatabase;
+import com.vaj.shoppingcart.model.database.ProductDatabase;
+import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.login.LoginAndRegister;
+import com.vaj.shoppingcart.model.product.AddOrEditProduct;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,13 +20,23 @@ public class ShoppingCart extends Application {
 
   public static ShoppingCart instance;
   public final LoginAndRegister loginAndRegister;
-  public final Database database;
+  public final UserDatabase userDatabase;
+  public final ProductDatabase productDatabase;
+  public final InvoiceDatabase invoiceDatabase;
+  public final OrderDatabase orderDatabase;
+  public final AddOrEditProduct addOrEditProduct;
 
   public ShoppingCart() {
     instance = this;
 
     this.loginAndRegister = new LoginAndRegister(this);
-    this.database = new Database(this);
+    this.userDatabase = new UserDatabase(this);
+    this.productDatabase = new ProductDatabase(this);
+    this.invoiceDatabase = new InvoiceDatabase(this);
+    this.orderDatabase = new OrderDatabase(this);
+    this.addOrEditProduct = new AddOrEditProduct(this);
+    
+    
   }
 
   /**
@@ -78,10 +93,31 @@ public class ShoppingCart extends Application {
   }
 
   /*
-   * Returns the database class to be used with a controller.
+   * Returns the invoiceDatabase class to be used with a controller.
    */
-  public Database getDatabase() {
-    return this.database;
+  public InvoiceDatabase getInvoiceDatabase() {
+    return this.invoiceDatabase;
+  }
+  
+  /*
+   * Returns the userDatabase class to be used with a controller.
+   */
+  public UserDatabase getUserDatabase() {
+    return this.userDatabase;
+  }
+  
+  /*
+   * Returns the productDatabase class to be used with a controller.
+   */
+  public ProductDatabase getProductDatabase() {
+    return this.productDatabase;
+  }
+  
+  /*
+   * Returns the orderDatabase class to be used with a controller.
+   */
+  public OrderDatabase getOrderDatabase() {
+    return this.orderDatabase;
   }
 
   /*
@@ -89,5 +125,11 @@ public class ShoppingCart extends Application {
    */
   public LoginAndRegister getLoginAndRegister() {
     return this.loginAndRegister;
+  }
+  /*
+   * Returns the Add or Edit Product class to be used with a controller.
+   */
+  public AddOrEditProduct getAddOrEditProduct() {
+    return this.addOrEditProduct;
   }
 }

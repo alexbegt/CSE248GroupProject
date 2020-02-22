@@ -7,12 +7,11 @@ public class Order {
 	private final double tax;
 	private final double total;
 	private HashMap<String, Integer> cartProducts;
-	public static int INVOICE_NUMBER = 0;
+	private final int orderNumber = 0;
 	private OrderStatus orderStatus;
 
 	
 	public Order(double subTotal, HashMap<String, Integer> cartProducts) {
-		super();
 		this.subTotal = subTotal;
 		this.tax = subTotal * (8.25/100);
 		this.total = subTotal + tax;
@@ -20,9 +19,6 @@ public class Order {
 		this.orderStatus = OrderStatus.PENDING;
 	}
 
-	public float generateInvoiceNumber() {
-		return INVOICE_NUMBER++;
-	}
 
 	public double getSubTotal() {
 		return subTotal;
@@ -40,14 +36,10 @@ public class Order {
 		this.cartProducts = products;
 	}
 
-	public int getInvoiceNumber() {
-		return INVOICE_NUMBER;
+	public int getOrderNumber() {
+		return orderNumber;
 	}
-
-	public void setInvoiceNumber(int invoiceNumber) {
-		this.INVOICE_NUMBER = invoiceNumber;
-	}
-
+	
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
