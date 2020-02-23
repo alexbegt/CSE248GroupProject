@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.warehouse.FinancialController">
+   <children>
+      <AnchorPane prefHeight="76.0" prefWidth="699.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label alignment="CENTER" layoutX="50.0" layoutY="27.0" prefHeight="23.0" prefWidth="600.0" text="Shopping Cart Financial History" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="76.0" prefHeight="324.0" prefWidth="699.0" style="-fx-background-color: #d3d3d3;">
+         <children>
+            <Label fx:id="txtProfit" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="434.0" text="Profit: $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTaxesPaid" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="60.0" prefHeight="34.0" prefWidth="434.0" text="Total tax paid: $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <PieChart fx:id="pieChart" layoutX="455.0" layoutY="15.0" prefHeight="221.0" prefWidth="224.0" />
+            <Button fx:id="btnClose" layoutX="258.0" layoutY="276.0" mnemonicParsing="false" onMouseClicked="#handleClose" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../../../../../../CSE248GroupProject/src/main/resources/assets/vaj/shoppingcart/styling/shopping_cart_styling.css" text="Close" />
+            <Label fx:id="txtTotalOrders" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="164.0" prefHeight="34.0" prefWidth="434.0" text="Total orders: %s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTotalInvoices" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="216.0" prefHeight="34.0" prefWidth="434.0" text="Total invoices: %s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtProfitWithTax" alignment="BASELINE_LEFT" layoutX="14.0" layoutY="111.0" prefHeight="34.0" prefWidth="434.0" text="Profit (Taxes Included): $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

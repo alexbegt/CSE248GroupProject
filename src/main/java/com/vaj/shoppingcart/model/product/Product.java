@@ -1,13 +1,13 @@
 package com.vaj.shoppingcart.model.product;
 
-import com.vaj.shoppingcart.model.database.Database;
+import com.vaj.shoppingcart.model.database.ProductDatabase;
 
 public class Product {
 
   private final int productIdentifier;
   private final String shortName;
-  private final String name;
-  private final String description;
+  private String name;
+  private String description;
   private double price;
   private double salePrice;
   private int onHands;
@@ -15,7 +15,7 @@ public class Product {
   private String photoPath;
 
   public Product(String shortName, String name, String description, double price, int onHands, String photoPath) {
-    this.productIdentifier = Database.PRODUCT_ID++;
+    this.productIdentifier = ProductDatabase.PRODUCT_ID++;
     this.shortName = shortName;
     this.name = name;
     this.description = description;
@@ -45,12 +45,30 @@ public class Product {
   }
 
   /*
+   * Sets the new name
+   *
+   * @param nameIn the new name.
+   */
+  public void setName(String nameIn) {
+    this.name = nameIn;
+  }
+
+  /*
    * Gets the name of the current product.
    *
    * @return the product name.
    */
   public String getName() {
     return this.name;
+  }
+
+  /*
+   * Sets the new description
+   *
+   * @param descriptionIn the new name.
+   */
+  public void setDescription(String descriptionIn) {
+    this.description = descriptionIn;
   }
 
   /*

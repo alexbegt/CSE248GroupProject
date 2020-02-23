@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart.helper;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
@@ -29,7 +30,6 @@ public class AccountHelper {
   }
 
   public static Optional<String> generateRandomPasswordSalt(final int length) {
-
     if (length < 1) {
       throw new AssertionError("error in generatePasswordSalt: length must be > 0");
     }
@@ -100,7 +100,7 @@ public class AccountHelper {
     gridPane.setPrefSize(250, 50);
     gridPane.add(textArea, 0, 0);
 
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.CLOSE);
     alert.setTitle(windowName);
     alert.setHeaderText(null);
     alert.getDialogPane().setContent(gridPane);

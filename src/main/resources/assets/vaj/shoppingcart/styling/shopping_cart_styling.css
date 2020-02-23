@@ -14,3 +14,6 @@
 -fx-background-color : #0C39FF ;
 -fx-text-fill: #FFF;
 }
+.table-column {
+    -fx-alignment: CENTER;
+}

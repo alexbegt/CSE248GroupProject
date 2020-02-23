@@ -19,23 +19,23 @@ public class LoginAndRegister {
     this.shoppingCart = mainClassIn;
   }
 
-  /*
-  * Logs the user in with the given username and password if the user exists, and their password matches.
-  *
-  * @param username the entered username by the user
-  * @param password the entered password by the user
-  *
-  * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
+  /**
+   * Logs the user in with the given username and password if the user exists, and their password matches.
+   *
+   * @param username the entered username by the user
+   * @param password the entered password by the user
+   *
+   * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
    */
   public LoginStatus logUserIn(String username, String password) {
-    if (!this.shoppingCart.getDatabase().findUser(username)) {
+    if (!this.shoppingCart.getUserDatabase().findUser(username)) {
       return LoginStatus.INVALID_USER;
     }
-    if (this.shoppingCart.getDatabase().getUser(username).getAccountStatus() == AccountStatus.DISABLED) {
+    if (this.shoppingCart.getUserDatabase().getUser(username).getAccountStatus() == AccountStatus.DISABLED) {
       return LoginStatus.ACCOUNT_DISABLED;
     }
 
-    User user = this.shoppingCart.getDatabase().getUser(username);
+    User user = this.shoppingCart.getUserDatabase().getUser(username);
 
     if (user == null) {
       return LoginStatus.INVALID_USER;
@@ -47,7 +47,7 @@ public class LoginAndRegister {
     return LoginStatus.SUCCESS;
   }
 
-  /*
+  /**
    * Registers a user if it does not exist.
    *
    * @param name the entered name by the user
@@ -75,23 +75,23 @@ public class LoginAndRegister {
     if (!AccountHelper.verifyPassword(confirmPasswordIn, password.get(), passwordSalt.get())) {
       return RegisterStatus.PASSWORDS_DO_NOT_MATCH;
     }
-    if (this.shoppingCart.getDatabase().findUser(username)) {
+    if (this.shoppingCart.getUserDatabase().findUser(username)) {
       return RegisterStatus.USERNAME_IN_USE;
     }
-    if (this.shoppingCart.getDatabase().findAnyUserWithEmail(email)) {
+    if (this.shoppingCart.getUserDatabase().findAnyUserWithEmail(email)) {
       return RegisterStatus.EMAIL_IN_USE;
     }
 
     User user = new User(name, address, username, password.get(), passwordSalt.get(), email, AccountType.USER);
 
-    if (this.shoppingCart.getDatabase().addUser(user)) {
+    if (this.shoppingCart.getUserDatabase().addUser(user)) {
       return RegisterStatus.SUCCESSFUL;
     } else {
       return RegisterStatus.ERROR;
     }
   }
 
-  /*
+  /**
    * Resets the user's passwords
    *
    * @param username the entered username by the user
@@ -99,14 +99,14 @@ public class LoginAndRegister {
    * @return Pair<ResetStatus, String> the status returned (INVALID_EMAIL, ACCOUNT_DISABLED, INVALID_USER, ERROR_GENERATING_PASSWORD_SALT, ERROR_ENCRYPTING_PASSWORD, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotPassword(String username) {
-    if (!this.shoppingCart.getDatabase().findUser(username)) {
+    if (!this.shoppingCart.getUserDatabase().findUser(username)) {
       return new Pair<>(ResetStatus.INVALID_USER, "");
     }
-    if (this.shoppingCart.getDatabase().getUser(username).getAccountStatus() == AccountStatus.DISABLED) {
+    if (this.shoppingCart.getUserDatabase().getUser(username).getAccountStatus() == AccountStatus.DISABLED) {
       return new Pair<>(ResetStatus.ACCOUNT_DISABLED, "");
     }
 
-    User user = this.shoppingCart.getDatabase().getUser(username);
+    User user = this.shoppingCart.getUserDatabase().getUser(username);
     if (user == null) {
       return new Pair<>(ResetStatus.INVALID_USER, "");
     }
@@ -126,7 +126,7 @@ public class LoginAndRegister {
     return new Pair<>(ResetStatus.SUCCESS, randomPassword);
   }
 
-  /*
+  /**
    * Gets the user's username if its exists
    *
    * @param email the entered email by the user
@@ -134,13 +134,13 @@ public class LoginAndRegister {
    * @return Pair<ResetStatus, String> the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotUsername(String email) {
-    if (!this.shoppingCart.getDatabase().findAnyUserWithEmail(email)) {
+    if (!this.shoppingCart.getUserDatabase().findAnyUserWithEmail(email)) {
       return new Pair<>(ResetStatus.INVALID_USER, "");
     }
-    if (this.shoppingCart.getDatabase().getAnyUserWithEmail(email).getAccountStatus() == AccountStatus.DISABLED) {
+    if (this.shoppingCart.getUserDatabase().getAnyUserWithEmail(email).getAccountStatus() == AccountStatus.DISABLED) {
       return new Pair<>(ResetStatus.ACCOUNT_DISABLED, "");
     }
-    User user = this.shoppingCart.getDatabase().getAnyUserWithEmail(email);
+    User user = this.shoppingCart.getUserDatabase().getAnyUserWithEmail(email);
     if (user == null) {
       return new Pair<>(ResetStatus.INVALID_USER, "");
     }
