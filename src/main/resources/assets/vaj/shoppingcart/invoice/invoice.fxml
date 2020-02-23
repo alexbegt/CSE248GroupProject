@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.invoice.InvoiceController">
+   <children>
+      <AnchorPane prefHeight="56.0" prefWidth="750.0" style="-fx-background-color: #000000;">
+         <children>
+            <Label alignment="CENTER" layoutX="168.0" layoutY="17.0" prefHeight="23.0" prefWidth="414.0" text="Shopping Cart: Invoice" textFill="WHITE">
+               <font>
+                  <Font name="Segoe UI" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutY="55.0" prefHeight="621.0" prefWidth="743.0" style="-fx-background-color: #d3d3d3;">
+         <children>
+            <Label alignment="CENTER" layoutX="105.0" layoutY="52.0" prefHeight="34.0" prefWidth="523.0" text="Thank you for shopping at VAJ." textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="32.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnClose" layoutX="274.0" layoutY="566.0" mnemonicParsing="false" onMouseClicked="#handleClose" prefHeight="34.0" prefWidth="184.0" stylesheets="@../../../../../../../../CSE248GroupProject/src/main/resources/assets/vaj/shoppingcart/styling/shopping_cart_styling.css" text="Close" />
+            <TableView fx:id="cartProducts" layoutX="16.0" layoutY="161.0" prefHeight="278.0" prefWidth="709.0" stylesheets="@../styling/shopping_cart_styling.css">
+              <columns>
+                <TableColumn fx:id="productNumber" editable="false" prefWidth="114.0" resizable="false" sortType="DESCENDING" text="Product Number" />
+                <TableColumn fx:id="productName" editable="false" prefWidth="220.0" resizable="false" text="Product Name" />
+                  <TableColumn fx:id="productQuantity" editable="false" prefWidth="98.0" resizable="false" text="Quantity" />
+                  <TableColumn fx:id="productPrice" editable="false" prefWidth="136.0" resizable="false" text="Unit Price" />
+                  <TableColumn fx:id="productTotalPrice" editable="false" prefWidth="136.0" resizable="false" text="Total Price" />
+              </columns>
+            </TableView>
+            <Label fx:id="txtDear" alignment="BASELINE_LEFT" layoutX="16.0" layoutY="6.0" prefHeight="34.0" prefWidth="350.0" text="Dear %s," textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtOrderNumber" alignment="CENTER" layoutX="63.0" layoutY="103.0" prefHeight="34.0" prefWidth="257.0" text="Your order number is: %s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtSubTotal" alignment="BASELINE_LEFT" layoutX="16.0" layoutY="441.0" prefHeight="34.0" prefWidth="561.0" text="Subtotal: $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTax" alignment="BASELINE_LEFT" layoutX="16.0" layoutY="476.0" prefHeight="34.0" prefWidth="561.0" text="Tax: $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtTotal" alignment="BASELINE_LEFT" layoutX="16.0" layoutY="512.0" prefHeight="34.0" prefWidth="561.0" text="Total: $%s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtInvoiceNumber" alignment="CENTER" layoutX="397.0" layoutY="103.0" prefHeight="34.0" prefWidth="274.0" text="Your invoice number is: %s" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="21.0" />
+               </font>
+            </Label>
+            <Label fx:id="txtDear1" alignment="BASELINE_LEFT" layoutX="617.0" layoutY="583.0" prefHeight="34.0" prefWidth="108.0" text="Tax rate: 8.25%" textAlignment="CENTER">
+               <font>
+                  <Font name="Segoe UI" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

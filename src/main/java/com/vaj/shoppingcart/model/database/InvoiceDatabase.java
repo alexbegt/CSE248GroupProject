@@ -61,11 +61,32 @@ public class InvoiceDatabase {
     return this.invoiceTreeMap.containsKey(invoiceId);
   }
 
+  /**
+   * sets invoice treemap to invoice treemap 
+   *
+   * @param invoiceTreeMap - sets old invoiceTreeMap to new  invoiceTreeMap
+   * 
+   */
   public void setInvoiceTreeMap(TreeMap<Integer, Invoice> invoiceTreeMap) {
     this.invoiceTreeMap = invoiceTreeMap;
   }
-
+  
+  /**
+   * retrieves invoiceTreeMap
+   * 
+   */
   public TreeMap<Integer, Invoice> getInvoiceTreeMap() {
     return invoiceTreeMap;
+  }
+  
+  /**
+   * sets invoice treemap to invoice treemap 
+   *
+   * @param invoiceId - sets old invoiceTreeMap to new  invoiceTreeMap
+   * @return returns invoice retrieved by invoice id.
+   * 
+   */
+  public Invoice getInvoice(int invoiceId) {
+	  return this.invoiceTreeMap.getOrDefault(invoiceId, null);
   }
 }

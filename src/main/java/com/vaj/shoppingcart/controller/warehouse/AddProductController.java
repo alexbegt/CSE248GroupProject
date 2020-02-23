@@ -4,17 +4,19 @@ import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.model.product.ProductStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddProductController implements Initializable {
+public class AddProductController extends GenericWarehouseController implements Initializable {
 
   @FXML
   private TextField txtShortName;
@@ -40,11 +42,24 @@ public class AddProductController implements Initializable {
   @FXML
   private ChoiceBox<ProductStatus> productStatus;
 
+  /**
+   * Handles when a user presses the cancel button.
+   *
+   * @param event the mouse Event
+   */
   @FXML
   void handleCancel(MouseEvent event) {
+    Node node = (Node) event.getSource();
+    Stage stage = (Stage) node.getScene().getWindow();
 
+    returnToWarehouseHome(stage);
   }
 
+  /**
+   * Handles when a user presses the submit button.
+   *
+   * @param event the mouse Event
+   */
   @FXML
   void handleSubmit(MouseEvent event) {
     String shortName = txtShortName.getText();
@@ -94,6 +109,12 @@ public class AddProductController implements Initializable {
     });
   }
 
+  /**
+   * Sets the text of the label on the screen
+   *
+   * @param color the color.
+   * @param text  the actual text
+   */
   private void setErrorText(Color color, String text) {
     lblErrors.setTextFill(color);
     lblErrors.setText(text);

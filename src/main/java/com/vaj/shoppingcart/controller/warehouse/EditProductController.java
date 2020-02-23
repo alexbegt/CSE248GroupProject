@@ -7,17 +7,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EditProductController implements Initializable {
+public class EditProductController extends GenericWarehouseController implements Initializable {
 
   @FXML
   private TextField txtShortName;
@@ -53,6 +55,14 @@ public class EditProductController implements Initializable {
     chBoxProductStatus.setValue(product.getProductStatus());
   }
 
+  /**
+   * Called to initialize a controller after its root element has been
+   * completely processed.
+   *
+   * @param location  The location used to resolve relative paths for the root object, or
+   *                  {@code null} if the location is not known.
+   * @param resources The resources used to localize the root object, or {@code null} if
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     ObservableList<ProductStatus> list = FXCollections.observableArrayList();
@@ -61,11 +71,24 @@ public class EditProductController implements Initializable {
     chBoxProductStatus.setItems(list);
   }
 
+  /**
+   * Handles when a user presses the cancel button.
+   *
+   * @param event the mouse Event
+   */
   @FXML
   void handleCancel(MouseEvent event) {
+    Node node = (Node) event.getSource();
+    Stage stage = (Stage) node.getScene().getWindow();
 
+    returnToWarehouseHome(stage);
   }
 
+  /**
+   * Handles when a user presses the submit button.
+   *
+   * @param event the mouse Event
+   */
   @FXML
   void handleSubmit(MouseEvent event) {
     String shortName = txtShortName.getText();
@@ -99,9 +122,15 @@ public class EditProductController implements Initializable {
     }
   }
 
+  /**
+   * Sets the text of the label on the screen
+   *
+   * @param color the color.
+   * @param text  the actual text
+   */
   private void setErrorText(Color color, String text) {
     lblErrors.setTextFill(color);
     lblErrors.setText(text);
-    System.out.println("Add Product: " + text);
+    System.out.println("Edit Product: " + text);
   }
 }

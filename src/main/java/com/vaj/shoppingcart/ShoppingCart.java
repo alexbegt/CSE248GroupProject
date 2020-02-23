@@ -7,6 +7,8 @@ import com.vaj.shoppingcart.model.database.ProductDatabase;
 import com.vaj.shoppingcart.model.database.UserDatabase;
 import com.vaj.shoppingcart.model.login.LoginAndRegister;
 import com.vaj.shoppingcart.model.product.AddOrEditProduct;
+import com.vaj.shoppingcart.model.warehouse.Financials;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +26,7 @@ public class ShoppingCart extends Application {
   private final InvoiceDatabase invoiceDatabase;
   private final OrderDatabase orderDatabase;
   private final AddOrEditProduct addOrEditProduct;
+  private final Financials financials;
 
   public ShoppingCart() {
     instance = this;
@@ -34,6 +37,7 @@ public class ShoppingCart extends Application {
     this.invoiceDatabase = new InvoiceDatabase(this);
     this.orderDatabase = new OrderDatabase(this);
     this.addOrEditProduct = new AddOrEditProduct(this);
+    this.financials = new Financials(this);
   }
 
   /**
@@ -133,4 +137,13 @@ public class ShoppingCart extends Application {
   public AddOrEditProduct getAddOrEditProduct() {
     return this.addOrEditProduct;
   }
+  
+  /*
+   * Returns the financials class to be used with a controller.
+   */
+  public Financials getFinancials() {
+    return this.financials;
+  }
+  
+  
 }
