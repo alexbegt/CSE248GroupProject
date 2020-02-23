@@ -11,6 +11,17 @@ public class AddOrEditProduct {
     this.shoppingCart = shoppingCart;
   }
 
+  /**
+   * Adds a product to the database if does not exist.
+   *
+   * @param shortName the products short name
+   * @param name the products name
+   * @param description the products description
+   * @param priceIn the products price
+   * @param onHandsIn the products on hands
+   * @param filePath the products photo path
+   * @return AddProductStatus the status returned (ITEM_EXISTS, INVALID_PRICE, INVALID_ON_HANDS, SUCCESSFUL, ERROR)
+   */
   public AddProductStatus addProduct(String shortName, String name, String description, String priceIn, String onHandsIn, String filePath) {
     if (this.shoppingCart.getProductDatabase().findProduct(shortName)) {
       return AddProductStatus.ITEM_EXISTS;
@@ -34,6 +45,18 @@ public class AddOrEditProduct {
     }
   }
 
+  /**
+   * Edits a product if it exists.
+   *
+   * @param shortName the products short name
+   * @param name the products name
+   * @param description the products description
+   * @param priceIn the products price
+   * @param onHandsIn the products on hands
+   * @param productStatus the product status
+   * @param filePath the products photo path
+   * @return EditProductStatus the status returned (ITEM_DOESNT_EXIST, INVALID_PRICE, INVALID_ON_HANDS, SUCCESSFUL, ERROR)
+   */
   public EditProductStatus editProduct(String shortName, String name, String description, String priceIn, String onHandsIn, ProductStatus productStatus, String filePath) {
     if (!this.shoppingCart.getProductDatabase().findProduct(shortName)) {
       return EditProductStatus.ITEM_DOESNT_EXIST;

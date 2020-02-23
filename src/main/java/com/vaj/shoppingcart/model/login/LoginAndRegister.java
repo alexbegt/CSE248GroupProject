@@ -19,7 +19,7 @@ public class LoginAndRegister {
     this.shoppingCart = mainClassIn;
   }
 
-  /*
+  /**
    * Logs the user in with the given username and password if the user exists, and their password matches.
    *
    * @param username the entered username by the user
@@ -47,7 +47,7 @@ public class LoginAndRegister {
     return LoginStatus.SUCCESS;
   }
 
-  /*
+  /**
    * Registers a user if it does not exist.
    *
    * @param name the entered name by the user
@@ -91,7 +91,7 @@ public class LoginAndRegister {
     }
   }
 
-  /*
+  /**
    * Resets the user's passwords
    *
    * @param username the entered username by the user
@@ -126,7 +126,7 @@ public class LoginAndRegister {
     return new Pair<>(ResetStatus.SUCCESS, randomPassword);
   }
 
-  /*
+  /**
    * Gets the user's username if its exists
    *
    * @param email the entered email by the user
