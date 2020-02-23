@@ -77,7 +77,7 @@ public class CartController implements Initializable {
 	        Stage stage = (Stage) node.getScene().getWindow();
 	        stage.close();
 
-	        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/checkout.fxml")));
+	        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/checkout.fxml")));
 	        stage.setScene(scene);
 	        stage.setResizable(false);
 	        stage.show();
