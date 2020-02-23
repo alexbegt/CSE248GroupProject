@@ -25,9 +25,9 @@ public class CartController implements Initializable {
 	@FXML
 	private Button btnCheckout;
 	@FXML
-	private TableColumn tblProduct;
+	private TableColumn<?, String> tblProduct;
 	@FXML
-	private TableColumn tblQuantity;
+	private TableColumn<?, Integer> tblQuantity;
 	
 	@FXML
 	void handleBackToHome(MouseEvent event) {
@@ -66,7 +66,8 @@ public class CartController implements Initializable {
 	
 	@FXML
 	void handleRemoveFromCart(MouseEvent event) {
-		
+		String selectedItem = (String) tblProduct.getTableView().getSelectionModel().getSelectedItem();
+		tblProduct.getTableView().getItems().remove(selectedItem);
 	}
 	
 	@FXML
