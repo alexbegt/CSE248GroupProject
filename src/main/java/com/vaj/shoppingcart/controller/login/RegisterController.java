@@ -1,26 +1,23 @@
 package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.controller.GenericController;
+import com.vaj.shoppingcart.helper.AccountHelper;
 import com.vaj.shoppingcart.model.account.Address;
 import com.vaj.shoppingcart.model.account.Name;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RegisterController implements Initializable {
+public class RegisterController extends GenericController implements Initializable {
 
   @FXML
   private TextField txtFirstName;
@@ -51,27 +48,21 @@ public class RegisterController implements Initializable {
   @FXML
   private Button btnCancel;
 
+  /**
+   * Handles when a user presses the cancel button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleCancel(MouseEvent event) {
-    this.returnToLogin(event);
+    returnToLogin(event);
   }
 
-  private void returnToLogin(MouseEvent event) {
-    try {
-      Node node = (Node) event.getSource();
-      Stage stage = (Stage) node.getScene().getWindow();
-      stage.close();
-
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/login.fxml")));
-      stage.setScene(scene);
-      stage.setResizable(false);
-      stage.show();
-
-    } catch (IOException ex) {
-      System.err.println(ex.getMessage());
-    }
-  }
-
+  /**
+   * Handles when a user presses the complete button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleCompleteSignUp(MouseEvent event) {
     String username = txtUsername.getText();
@@ -112,7 +103,8 @@ public class RegisterController implements Initializable {
           this.setErrorText(Color.TOMATO, "Unknown error.");
           break;
         case SUCCESSFUL:
-          this.setErrorText(Color.GREEN, "Successful! Logging in...");
+          this.setErrorText(Color.GREEN, "Successful! Returning to login...");
+          AccountHelper.createDialog("Account created, please log in.", "Registration");
           this.returnToLogin(event);
           break;
       }
@@ -132,6 +124,12 @@ public class RegisterController implements Initializable {
 
   }
 
+  /**
+   * Sets the text of the label on the screen
+   *
+   * @param color the color.
+   * @param text  the actual text
+   */
   private void setErrorText(Color color, String text) {
     lblErrors.setTextFill(color);
     lblErrors.setText(text);

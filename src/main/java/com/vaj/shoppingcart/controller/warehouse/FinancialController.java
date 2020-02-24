@@ -1,25 +1,23 @@
 package com.vaj.shoppingcart.controller.warehouse;
 
+import com.vaj.shoppingcart.controller.GenericController;
 import com.vaj.shoppingcart.helper.AccountHelper;
 import com.vaj.shoppingcart.model.warehouse.Financials;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FinancialController implements Initializable {
+public class FinancialController extends GenericController implements Initializable {
 
   @FXML
   private Label txtProfit;
@@ -52,29 +50,10 @@ public class FinancialController implements Initializable {
   }
 
   /**
-   * Returns the admin back to the warehouse home screen.
-   *
-   * @param stage the current stage
-   */
-  void returnToWarehouseHome(Stage stage) {
-    try {
-      stage.close();
-
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/assets/vaj/shoppingcart/warehouse/warehouse.fxml"));
-      Scene scene = new Scene(loader.load());
-      stage.setScene(scene);
-      stage.setResizable(false);
-      stage.show();
-    } catch (IOException ex) {
-      System.err.println(ex.getMessage());
-    }
-  }
-
-  /**
    * Sets the data to be shown on the display.
    *
    * @param financials the financials class
-   * @param stage the current stage
+   * @param stage      the current stage
    */
   public void initializeData(Financials financials, Stage stage) {
     double profit = financials.getProfit();

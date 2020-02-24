@@ -14,14 +14,29 @@ public class Invoice {
     this.username = username;
   }
 
+  /**
+   * Gets the invoice numbers.
+   *
+   * @return the invoice number
+   */
   public int getInvoiceNumber() {
     return this.invoiceIdentifier;
   }
 
+  /**
+   * Gets the order numbers.
+   *
+   * @return the order number
+   */
   public int getOrderNumber() {
     return this.orderNumber;
   }
 
+  /**
+   * Gets the username.
+   *
+   * @return the invoice username
+   */
   public String getUserName() {
     return this.username;
   }

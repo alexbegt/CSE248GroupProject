@@ -1,26 +1,22 @@
 package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.controller.GenericController;
 import com.vaj.shoppingcart.helper.AccountHelper;
 import com.vaj.shoppingcart.model.login.ResetStatus;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ForgotUserController implements Initializable {
+public class ForgotUserController extends GenericController implements Initializable {
 
   @FXML
   private TextField txtEmail;
@@ -31,6 +27,11 @@ public class ForgotUserController implements Initializable {
   @FXML
   private Button btnCancel;
 
+  /**
+   * Handles when a user presses the submit button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleSubmit(MouseEvent event) {
     String emailText = txtEmail.getText();
@@ -50,6 +51,7 @@ public class ForgotUserController implements Initializable {
         case SUCCESS:
           this.setErrorText(Color.GREEN, "Your account name is: " + forgotUsername.getValue());
           AccountHelper.createDialog("Your account name is: " + forgotUsername.getValue(), "Forgot Username");
+          returnToLogin(event);
           break;
         case ERROR:
           this.setErrorText(Color.TOMATO, "Unknown error.");
@@ -58,21 +60,14 @@ public class ForgotUserController implements Initializable {
     }
   }
 
+  /**
+   * Handles when a user presses the cancel button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleCancel(MouseEvent event) {
-    try {
-      Node node = (Node) event.getSource();
-      Stage stage = (Stage) node.getScene().getWindow();
-      stage.close();
-
-      Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/login/login.fxml")));
-      stage.setScene(scene);
-      stage.setResizable(false);
-      stage.show();
-
-    } catch (IOException ex) {
-      System.err.println(ex.getMessage());
-    }
+    returnToLogin(event);
   }
 
   /**
@@ -88,6 +83,12 @@ public class ForgotUserController implements Initializable {
 
   }
 
+  /**
+   * Sets the text of the label on the screen
+   *
+   * @param color the color.
+   * @param text  the actual text
+   */
   private void setErrorText(Color color, String text) {
     lblErrors.setTextFill(color);
     lblErrors.setText(text);

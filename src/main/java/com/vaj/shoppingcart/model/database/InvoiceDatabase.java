@@ -17,6 +17,11 @@ public class InvoiceDatabase {
     this.invoiceTreeMap = new TreeMap<Integer, Invoice>();
   }
 
+  /**
+   * Gets the shopping cart class
+   *
+   * @return the shopping cart class.
+   */
   public ShoppingCart getShoppingCart() {
     return shoppingCart;
   }

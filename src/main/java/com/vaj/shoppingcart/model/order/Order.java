@@ -16,8 +16,7 @@ public class Order {
   private final int orderNumber;
   private OrderStatus orderStatus;
   private final String username;
-
-
+  
   public Order(double subTotalIn, double taxIn, double totalIn, HashMap<String, Integer> cartProducts, String username) {
     this.orderNumber = OrderDatabase.ORDER_ID++;
     this.subTotal = Double.parseDouble(decimalFormat.format(subTotalIn));
@@ -30,7 +29,7 @@ public class Order {
 
   /**
    * retrieves the subtotal
-   * 
+   *
    * @return double, returns the total.
    */
   public double getSubTotal() {
@@ -39,7 +38,7 @@ public class Order {
 
   /**
    * retrieves the tax
-   * 
+   *
    * @return double, returns the tax.
    */
   public double getTax() {
@@ -48,7 +47,7 @@ public class Order {
 
   /**
    * retrieves the total
-   * 
+   *
    * @return double, returns total.
    */
   public double getTotal() {
@@ -57,7 +56,7 @@ public class Order {
 
   /**
    * retrieves the order number
-   * 
+   *
    * @return int, retrieves order number.
    */
   public int getOrderNumber() {
@@ -66,7 +65,7 @@ public class Order {
 
   /**
    * retrieves the order status
-   * 
+   *
    * @return OrderStatus, returns the status of the order in the from of OrderStatus Interface.
    */
   public OrderStatus getOrderStatus() {
@@ -75,7 +74,6 @@ public class Order {
 
   /**
    * sets the order status of the order
-   * 
    */
   public void setOrderStatus(OrderStatus orderStatus) {
     this.orderStatus = orderStatus;
@@ -83,7 +81,7 @@ public class Order {
 
   /**
    * retrieves the products from cart
-   * 
+   *
    * @return HashMap, returns the hashmap of products
    */
   public HashMap<String, Integer> getProducts() {
@@ -92,27 +90,26 @@ public class Order {
 
   /**
    * sets products to products in cart
-   * 
    */
   public void setProducts(HashMap<String, Integer> products) {
     this.cartProducts = products;
   }
-  
+
   /**
    * checks if cart is empty
-   * 
+   *
    * @return boolean, if cart is empty returns true, if cart has items, returns false.
    */
   public boolean isEmpty() {
-	  return this.cartProducts.isEmpty();
+    return this.getProducts().isEmpty();
   }
-  
+
   /**
    * retrieves the username
-   * 
+   *
    * @return String, returns the username;
    */
   public String getUsername() {
-	  return username;
+    return username;
   }
 }

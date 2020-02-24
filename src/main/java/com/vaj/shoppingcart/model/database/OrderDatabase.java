@@ -17,6 +17,11 @@ public class OrderDatabase {
     this.orderTreeMap = new TreeMap<Integer, Order>();
   }
 
+  /**
+   * Gets the shopping cart class
+   *
+   * @return the shopping cart class.
+   */
   public ShoppingCart getShoppingCart() {
     return shoppingCart;
   }
@@ -68,10 +73,20 @@ public class OrderDatabase {
     return this.orderTreeMap.getOrDefault(orderNumber, null);
   }
 
+  /**
+   * Sets the order tree map
+   *
+   * @param orderTreeMap the new tree map
+   */
   public void setOrderTreeMap(TreeMap<Integer, Order> orderTreeMap) {
     this.orderTreeMap = orderTreeMap;
   }
 
+  /**
+   * Gets the order tree map
+   *
+   * @return the order tree map
+   */
   public TreeMap<Integer, Order> getOrderTreeMap() {
     return orderTreeMap;
   }
