@@ -181,7 +181,7 @@ public class CartTest extends ApplicationTest {
     Button addToCart = lookup("#btnSubmit").queryButton();
 
 
-    Node row=lookup(".table-row-cell").nth(0).query();
+    Node row = lookup(".table-row-cell").nth(0).query();
     clickOn(row);
 
     clickOn(quantityField);
