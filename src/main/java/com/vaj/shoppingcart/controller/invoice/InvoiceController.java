@@ -69,8 +69,6 @@ public class InvoiceController extends GenericController implements Initializabl
     User user = ShoppingCart.getInstance().getUserDatabase().getUser(invoice.getUserName());
     Order order = ShoppingCart.getInstance().getOrderDatabase().getOrder(invoice.getOrderNumber());
 
-    System.out.println("User: " + user + ", invoice: " + invoice + ", order: " + order + ", isEmpty: " + order.isEmpty() + ", username Matches?: " + order.getUsername().equalsIgnoreCase(user.getUsername()));
-
     if (user == null || order == null || order.isEmpty() || !order.getUsername().equalsIgnoreCase(user.getUsername())) {
       AccountHelper.createDialog("Unable to initialize data... Returning home.", "Invoice Error");
       this.returnToHome(stage);
