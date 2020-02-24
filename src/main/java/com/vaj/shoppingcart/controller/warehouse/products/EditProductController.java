@@ -14,6 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -45,6 +48,9 @@ public class EditProductController extends GenericController implements Initiali
   private Label lblErrors;
 
   @FXML
+  private ImageView productImage;
+
+  @FXML
   private ChoiceBox<ProductStatus> chBoxProductStatus;
 
   void initializeData(Product product) {
@@ -55,6 +61,19 @@ public class EditProductController extends GenericController implements Initiali
     txtAvailableAmount.setText(String.valueOf(product.getOnHands()));
     txtPhotoPath.setText(product.getPhotoPath());
     chBoxProductStatus.setValue(product.getProductStatus());
+
+    Image image = null;
+
+    if (!product.getPhotoPath().equalsIgnoreCase("")) {
+      try {
+        image = new Image("/assets/vaj/shoppingcart/images/" + product.getPhotoPath());
+      } catch (Exception e) {
+        image = new Image("/assets/vaj/shoppingcart/images/missing_image.png");
+      }
+
+      if (image != null)
+        productImage.setImage(image);
+    }
   }
 
   /**
@@ -80,10 +99,7 @@ public class EditProductController extends GenericController implements Initiali
    */
   @FXML
   void handleCancel(MouseEvent event) {
-    Node node = (Node) event.getSource();
-    Stage stage = (Stage) node.getScene().getWindow();
-
-    returnToWarehouseHome(stage);
+    switchToSelectProduct(event);
   }
 
   /**
@@ -139,5 +155,23 @@ public class EditProductController extends GenericController implements Initiali
     lblErrors.setTextFill(color);
     lblErrors.setText(text);
     System.out.println("Edit Product: " + text);
+  }
+
+  @FXML
+  public void userTyped(KeyEvent event) {
+    String text = txtPhotoPath.getText();
+
+    Image image = null;
+
+    if (!text.equalsIgnoreCase("")) {
+      try {
+        image = new Image("/assets/vaj/shoppingcart/images/" + text);
+      } catch (Exception e) {
+        image = new Image("/assets/vaj/shoppingcart/images/missing_image.png");
+      }
+
+      if (image != null)
+        productImage.setImage(image);
+    }
   }
 }

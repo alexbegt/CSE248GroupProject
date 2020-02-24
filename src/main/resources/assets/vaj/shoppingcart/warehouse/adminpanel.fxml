@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.warehouse.AdminPanelController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.warehouse.AdminPanelController">
    <children>
       <AnchorPane prefHeight="76.0" prefWidth="600.0" style="-fx-background-color: #000000;">
          <children>
@@ -17,7 +17,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Pane layoutY="76.0" prefHeight="386.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;">
+      <Pane layoutY="76.0" prefHeight="447.0" prefWidth="600.0" style="-fx-background-color: #d3d3d3;">
          <children>
             <Label fx:id="txtTotalUsers" alignment="CENTER" layoutX="14.0" layoutY="51.0" prefHeight="34.0" prefWidth="572.0" text="Total users: %s" textAlignment="CENTER">
                <font>
@@ -38,8 +38,8 @@
             <Button fx:id="btnCreateUser" layoutX="342.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#handleCreateUser" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Create Users" />
             <Button fx:id="btnViewAndEditProducts" layoutX="62.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#handleViewAndEditProducts" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="View/Edit Products" />
             <Button fx:id="btnCreateProduct" layoutX="342.0" layoutY="285.0" mnemonicParsing="false" onMouseClicked="#handleCreateProduct" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Create Product" />
-            <Button fx:id="btnReturnToHome" layoutX="62.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#handleReturnToHome" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Return to Home" />
-            <Button fx:id="btnViewFinancials" layoutX="342.0" layoutY="338.0" mnemonicParsing="false" onMouseClicked="#handleViewFinancials" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="View Financials" />
+            <Button fx:id="btnReturnToHome" layoutX="62.0" layoutY="398.0" mnemonicParsing="false" onMouseClicked="#handleReturnToHome" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Return to Home" />
+            <Button fx:id="btnViewFinancials" layoutX="342.0" layoutY="398.0" mnemonicParsing="false" onMouseClicked="#handleViewFinancials" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="View Financials" />
             <Label fx:id="txtTotalInvoices" alignment="CENTER" layoutX="14.0" layoutY="177.0" prefHeight="34.0" prefWidth="572.0" text="Total invoices: %s" textAlignment="CENTER">
                <font>
                   <Font name="Segoe UI" size="21.0" />
@@ -47,9 +47,11 @@
             </Label>
             <Label fx:id="txtHello" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="572.0" text="Hello there, %s! Here is the current information:" textAlignment="CENTER">
                <font>
-                  <Font name="Segoe UI" size="21.0" />
+                  <Font name="Segoe UI" size="18.0" />
                </font>
             </Label>
+            <Button fx:id="btnLoadDatabase" layoutX="62.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#handleLoadDatabase" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Load Database From Files" />
+            <Button fx:id="btnSaveDatabase" layoutX="342.0" layoutY="344.0" mnemonicParsing="false" onMouseClicked="#handleSaveDatabase" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Save Database To Files" />
          </children>
       </Pane>
    </children>

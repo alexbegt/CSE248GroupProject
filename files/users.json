@@ -1,0 +1,34 @@
+{
+  "current_id": 1,
+  "accounts": {
+    "alexbegt": {
+      "accountId": 0,
+      "name": {
+        "firstName": "Alexander",
+        "lastName": "Behrhof"
+      },
+      "address": {
+        "address": "5750 Sunrise Hwy",
+        "city": "Sayville",
+        "state": "NY",
+        "zipCode": "11782"
+      },
+      "username": "alexbegt",
+      "password": "wiE2TfT2R8xgu4c3l0waQXnsm6pgP787HxO/QHa8EkT2cA1c/9NSDBzsUkNHJ4xeXdMVP5xNDO7bAi+i39xv3Q\u003d\u003d",
+      "email": "alexanderbehrhof@gmail.com",
+      "orderHistory": [],
+      "invoiceHistory": [],
+      "cart": {
+        "currentItemsInCart": {},
+        "currentCartSubTotal": 0.0,
+        "currentTax": 0.0,
+        "currentTotal": 0.0
+      },
+      "currentOrderNumber": -1,
+      "currentInvoiceNumber": -1,
+      "accountStatus": "ACTIVE",
+      "accountType": "ADMIN",
+      "passwordSalt": "2B8XN+u7xCL7Yc3oHAMC2jzFG2C4nUTbI7AqwFH6dLTyMxq+s+36vd3EotzsHU4S9gMFN5lGBfZmFGfCQR6NMPj46gQgBXN078nt4b7Ruc7n2h2oZB6tVW32mRtqGO95IFkkZnl45MHMDI22U37T7Tl2QA+jYylNZVdOOpC7/jCSeBavNAoOJdZShtCb1Vn0AMllrcFxisf2xZh2YhPS0Q1Tu4ppj0JohfuswJG60dsDnVI7nRmic6e94j+L35ZFAgmAEvAu70TE/TPM0q0GFAs7Dpl3slbEsorEZzzEz9foJrIGcHwroKc1aZXr1Z7Bo2wMX4lLbCAJ5ckQuxwakoDR0ce11VUqqSqZ5dkm01O7LEIG46b5FSGkumIEjKBpg4OMy7pALhm9BGIqGmGDPliPS+GuULhBmP5j1uHEtQhBBQcdVvdkscWIr/aU9P59y3I5/H9kRdOGmqpZ55++9QftbGNbP6Izo95/FJOt8RXFNxJsZ81aYm4sRLvZrkU6+BIllUFtp3+Lt1lMAKOMTLKQUTGOy9FT9cPJCZNcA8emzN1abs9ZyPaLnNA5ra6lqhrS8bq1MfNulYRmje9DfSjQTWq1+4xKySe3pE8htDkNdfbYqfPHfDrDiIom75xl6TXEpOn9qczbemeY4I25AmpnM9gmjPh8VeUrQwR+y08\u003d"
+    }
+  }
+}

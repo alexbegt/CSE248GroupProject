@@ -16,6 +16,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -44,14 +46,42 @@ public class SearchController extends GenericController implements Initializable
   private TextField txtQuantity;
 
   @FXML
-  private Button btnSubmit;
+  private ImageView productImage;
+
   @FXML
-  private Button btnCancel;
+  private Label txtDescription;
 
   @FXML
   private Label lblErrors;
 
+  @FXML
+  private Button btnSubmit;
+  @FXML
+  private Button btnCancel;
+
   private boolean isFromCart;
+
+  @FXML
+  void handleClickingOnTable(MouseEvent event) {
+    ProductTable selectedProduct = products.getSelectionModel().getSelectedItem();
+    if (selectedProduct != null) {
+      Product product = ShoppingCart.getInstance().getProductDatabase().getProduct(selectedProduct.getProductShortName());
+      if (product != null) {
+        txtDescription.setText(product.getDescription());
+
+        Image image = null;
+
+        try {
+          image = new Image("/assets/vaj/shoppingcart/images/" + product.getPhotoPath());
+        } catch (Exception e) {
+          image = new Image("/assets/vaj/shoppingcart/images/missing_image.png");
+        }
+
+        if (image != null)
+          productImage.setImage(image);
+      }
+    }
+  }
 
   @FXML
   void handleCancel(MouseEvent event) {
@@ -67,10 +97,10 @@ public class SearchController extends GenericController implements Initializable
     Node node = (Node) event.getSource();
     Stage stage = (Stage) node.getScene().getWindow();
 
-    ProductTable selectedProductNumber = products.getSelectionModel().getSelectedItem();
+    ProductTable selectedProduct = products.getSelectionModel().getSelectedItem();
     String quantityText = txtQuantity.getText();
 
-    if (selectedProductNumber == null) {
+    if (selectedProduct == null) {
       this.setErrorText(Color.TOMATO, "Please select a product!");
     } else if (quantityText.isEmpty()) {
       this.setErrorText(Color.TOMATO, "Please enter a quantity!");
@@ -79,17 +109,17 @@ public class SearchController extends GenericController implements Initializable
     } else {
       int quantity = Integer.parseInt(quantityText);
 
-      if (quantity > selectedProductNumber.getProductQuantity()) {
-        this.setErrorText(Color.TOMATO, "That quantity is too big, it must be between 1 and " + selectedProductNumber.getProductQuantity());
+      if (quantity > selectedProduct.getProductQuantity()) {
+        this.setErrorText(Color.TOMATO, "That quantity is too big, it must be between 1 and " + selectedProduct.getProductQuantity());
       } else if (quantity < 1) {
-        this.setErrorText(Color.TOMATO, "That quantity is too small, it must be between 1 and " + selectedProductNumber.getProductQuantity());
+        this.setErrorText(Color.TOMATO, "That quantity is too small, it must be between 1 and " + selectedProduct.getProductQuantity());
       } else {
         Cart cart = ShoppingCart.getInstance().getHome().getCurrentUserLoggedIn().getCart();
 
-        if (cart.hasProductInCart(selectedProductNumber.getProductShortName())) {
-          cart.updateQuantity(selectedProductNumber.getProductShortName(), quantity);
+        if (cart.hasProductInCart(selectedProduct.getProductShortName())) {
+          cart.updateQuantity(selectedProduct.getProductShortName(), quantity);
         } else {
-          cart.addItemToCart(selectedProductNumber.getProductShortName(), quantity);
+          cart.addItemToCart(selectedProduct.getProductShortName(), quantity);
         }
 
         AccountHelper.createDialog("Product added to your cart successfully", "Add product to cart");
