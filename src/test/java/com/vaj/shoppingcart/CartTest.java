@@ -1,12 +1,14 @@
 package com.vaj.shoppingcart;
 
+import com.vaj.shoppingcart.model.product.ProductTable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -16,7 +18,7 @@ import org.testfx.framework.junit5.ApplicationTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class RegisterAndLoginTest extends ApplicationTest {
+public class CartTest extends ApplicationTest {
 
   @BeforeAll
   static void setUpClass() throws Exception {
@@ -32,7 +34,6 @@ public class RegisterAndLoginTest extends ApplicationTest {
 
   @Test
   @Order(2)
-  @DisplayName("Register User")
   void testRegister() {
     TextField usernameField = (TextField) lookup("#txtUsername").queryTextInputControl();
     TextField passwordField = (TextField) lookup("#txtPassword").queryTextInputControl();
@@ -65,6 +66,8 @@ public class RegisterAndLoginTest extends ApplicationTest {
     write("111111");
 
     clickOn(signUpButton);
+
+    clickOn("Close");
   }
 
   void typeTest(TextField fieldIn) {
@@ -74,21 +77,6 @@ public class RegisterAndLoginTest extends ApplicationTest {
 
   @Test
   @Order(3)
-  void testActualLogin() {
-    Label errorLabel = (Label) lookup("#lblErrors").queryLabeled();
-    TextField usernameField = (TextField) lookup("#txtUsername").queryTextInputControl();
-    TextField passwordField = (TextField) lookup("#txtPassword").queryTextInputControl();
-    Button signInButton = lookup("#btnSignIn").queryButton();
-
-    typeTest(usernameField);
-    typeTest(passwordField);
-    clickOn(signInButton);
-
-    assertThat(errorLabel.getText()).isEqualTo("Successful! Logging in...");
-  }
-
-  @Test
-  @Order(4)
   void testForgotUsernameButton() {
     Label forgotUsernameButton = (Label) lookup("#btnForgotUsername").queryLabeled();
 
@@ -96,12 +84,11 @@ public class RegisterAndLoginTest extends ApplicationTest {
   }
 
   @Test
-  @Order(5)
+  @Order(4)
   void testForgotUsername() {
     Label errorLabel = (Label) lookup("#lblErrors").queryLabeled();
     TextField emailField = (TextField) lookup("#txtEmail").queryTextInputControl();
     Button submitButton = lookup("#btnSubmit").queryButton();
-    Button cancelButton = lookup("#btnCancel").queryButton();
 
     clickOn(emailField);
     write("test@test.com");
@@ -110,11 +97,11 @@ public class RegisterAndLoginTest extends ApplicationTest {
 
     assertThat(errorLabel.getText()).isEqualTo("Your account name is: test");
 
-    clickOn(cancelButton);
+    clickOn("Close");
   }
 
   @Test
-  @Order(6)
+  @Order(5)
   void testForgotPasswordButton() {
     Label forgotPasswordButton = (Label) lookup("#btnForgotPassword").queryLabeled();
 
@@ -122,21 +109,106 @@ public class RegisterAndLoginTest extends ApplicationTest {
   }
 
   @Test
-  @Order(7)
+  @Order(6)
   void testForgotPassword() {
     Label errorLabel = (Label) lookup("#lblErrors").queryLabeled();
+    Label newPasswordLabel = (Label) lookup("#lblNewPassword").queryLabeled();
     TextField usernameField = (TextField) lookup("#txtUsername").queryTextInputControl();
     Button submitButton = lookup("#btnSubmit").queryButton();
-    Button cancelButton = lookup("#btnCancel").queryButton();
 
     clickOn(usernameField);
     write("test");
 
     clickOn(submitButton);
 
+    TestConstraints.newPassword = newPasswordLabel.getText();
     assertThat(errorLabel.getText()).contains("Your new Password is: ");
 
-    clickOn(cancelButton);
+    clickOn("Close");
+  }
+
+  @Test
+  @Order(7)
+  void testActualLogin() {
+    TextField usernameField = (TextField) lookup("#txtUsername").queryTextInputControl();
+    TextField passwordField = (TextField) lookup("#txtPassword").queryTextInputControl();
+    Button signInButton = lookup("#btnSignIn").queryButton();
+
+    typeTest(usernameField);
+
+    clickOn(passwordField);
+    write(TestConstraints.newPassword);
+
+    clickOn(signInButton);
+  }
+
+  @Test
+  @Order(8)
+  void testSigningOut() {
+    Button logOutButton = lookup("#btnLogout").queryButton();
+
+    clickOn(logOutButton);
+  }
+
+
+  @Test
+  @Order(8)
+  void testLoginAgain() {
+    TextField usernameField = (TextField) lookup("#txtUsername").queryTextInputControl();
+    TextField passwordField = (TextField) lookup("#txtPassword").queryTextInputControl();
+    Button signInButton = lookup("#btnSignIn").queryButton();
+
+    typeTest(usernameField);
+
+    clickOn(passwordField);
+    write(TestConstraints.newPassword);
+
+    clickOn(signInButton);
+  }
+
+  @Test
+  @Order(9)
+  void testSearchingForItems() {
+    Button shopButton = lookup("#btnShop").queryButton();
+    clickOn(shopButton);
+  }
+
+  @Test
+  @Order(10)
+  void testSelectAnItemAndAddIt() {
+    TableView<ProductTable> tableView = lookup("#products").queryTableView();
+    TextField quantityField = (TextField) lookup("#txtQuantity").queryTextInputControl();
+    Button addToCart = lookup("#btnSubmit").queryButton();
+
+
+    Node row=lookup(".table-row-cell").nth(0).query();
+    clickOn(row);
+
+    clickOn(quantityField);
+    write("1");
+    clickOn(addToCart);
+  }
+
+  @Test
+  @Order(11)
+  void testCart() {
+    Button switchToCart = lookup("#btnSwitchToCart").queryButton();
+    clickOn(switchToCart);
+  }
+
+  @Test
+  @Order(12)
+  void testCheckout() {
+    Button checkout = lookup("#btnCheckout").queryButton();
+    clickOn(checkout);
+  }
+
+  @Test
+  @Order(13)
+  void testClosing() {
+    sleep(1000);
+    Button checkout = lookup("#btnClose").queryButton();
+    clickOn(checkout);
   }
 
   @Override
