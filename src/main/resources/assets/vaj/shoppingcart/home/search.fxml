@@ -5,52 +5,74 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="542.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.home.SearchController">
-   <children>
-      <AnchorPane prefHeight="76.0" prefWidth="591.0" style="-fx-background-color: #000000;">
-         <children>
-            <Label alignment="CENTER" layoutY="27.0" prefHeight="23.0" prefWidth="600.0" text="Shopping Cart: Search/Add a product to cart" textFill="WHITE">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <Pane layoutY="76.0" prefHeight="467.0" prefWidth="600.0">
-         <children>
-            <TableView fx:id="products" layoutX="16.0" layoutY="44.0" prefHeight="274.0" prefWidth="569.0" stylesheets="@../styling/shopping_cart_styling.css">
-               <columns>
-                  <TableColumn fx:id="productNumber" editable="false" prefWidth="114.0" resizable="false" sortType="DESCENDING" text="Product Number" />
-                  <TableColumn fx:id="productName" editable="false" prefWidth="220.0" resizable="false" text="Product Name" />
-                  <TableColumn fx:id="productOnHands" editable="false" prefWidth="98.0" resizable="false" text="On Hands" />
-                  <TableColumn fx:id="productPrice" editable="false" prefWidth="136.0" resizable="false" text="Price" />
-                  <TableColumn fx:id="productShortName" editable="false" prefWidth="114.0" resizable="false" sortType="DESCENDING" text="Product Shortname" visible="false" />
-               </columns>
-            </TableView>
-            <Label alignment="CENTER" layoutX="74.0" layoutY="14.0" prefHeight="23.0" prefWidth="454.0" text="Please select a product from the list">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnSubmit" layoutX="401.0" layoutY="412.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Add Product To Cart" />
-            <Button fx:id="btnCancel" layoutX="17.0" layoutY="412.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Cancel" />
-            <Label alignment="CENTER" layoutX="165.0" layoutY="370.0" prefHeight="23.0" prefWidth="81.0" text="Quantity:">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="lblErrors" alignment="CENTER" layoutX="16.0" layoutY="324.0" prefHeight="34.0" prefWidth="569.0" textFill="#ff6354">
-               <font>
-                  <Font name="Segoe UI" size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnSwitchToCart" layoutX="225.0" layoutY="412.0" mnemonicParsing="false" onMouseClicked="#handleSwitchToCart" prefHeight="34.0" prefWidth="158.0" stylesheets="@../styling/shopping_cart_styling.css" text="Switch To Cart" />
-            <TextField fx:id="txtQuantity" layoutX="253.0" layoutY="365.0" prefHeight="34.0" prefWidth="184.0" promptText="Quantity" />
-         </children>
-      </Pane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="1081.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.home.SearchController">
+    <children>
+        <AnchorPane prefHeight="76.0" prefWidth="1081.0" style="-fx-background-color: #000000;">
+            <children>
+                <Label alignment="CENTER" layoutY="27.0" prefHeight="23.0" prefWidth="1081.0" text="Shopping Cart: Search/Add a product to cart" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Pane layoutY="76.0" prefHeight="551.0" prefWidth="1081.0">
+            <children>
+                <TableView fx:id="products" layoutX="16.0" layoutY="44.0" onMouseClicked="#handleClickingOnTable" prefHeight="370.0" prefWidth="569.0" stylesheets="@../styling/shopping_cart_styling.css">
+                    <columns>
+                        <TableColumn fx:id="productNumber" editable="false" prefWidth="114.0" resizable="false" sortType="DESCENDING" text="Product Number" />
+                        <TableColumn fx:id="productName" editable="false" prefWidth="220.0" resizable="false" text="Product Name" />
+                        <TableColumn fx:id="productOnHands" editable="false" prefWidth="98.0" resizable="false" text="On Hands" />
+                        <TableColumn fx:id="productPrice" editable="false" prefWidth="136.0" resizable="false" text="Price" />
+                        <TableColumn fx:id="productShortName" editable="false" prefWidth="114.0" resizable="false" sortType="DESCENDING" text="Product Shortname" visible="false" />
+                    </columns>
+                </TableView>
+                <Label alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="23.0" prefWidth="569.0" text="Please select a product from the list">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnSubmit" layoutX="833.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Add Product To Cart" />
+                <Button fx:id="btnCancel" layoutX="34.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Cancel" />
+                <Label alignment="CENTER" layoutX="126.0" layoutY="439.0" prefHeight="23.0" prefWidth="256.0" text="Quantity to add to cart:">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="467.0" prefHeight="34.0" prefWidth="1063.0" textFill="#ff6354">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnSwitchToCart" layoutX="437.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#handleSwitchToCart" prefHeight="34.0" prefWidth="158.0" stylesheets="@../styling/shopping_cart_styling.css" text="Switch To Cart" />
+                <TextField fx:id="txtQuantity" layoutX="391.0" layoutY="433.0" prefHeight="34.0" prefWidth="184.0" promptText="Quantity" />
+                <ImageView fx:id="productImage" fitHeight="302.0" fitWidth="454.0" layoutX="595.0" layoutY="44.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@../images/missing_image.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" layoutX="688.0" layoutY="14.0" prefHeight="23.0" prefWidth="290.0" text="Image Preview:">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="txtDescription" alignment="CENTER" layoutX="591.0" layoutY="374.0" prefHeight="93.0" prefWidth="484.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="592.0" layoutY="351.0" prefHeight="23.0" prefWidth="484.0" text="Description:">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

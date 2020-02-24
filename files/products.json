@@ -1,0 +1,291 @@
+{
+  "current_id": 26,
+  "products": {
+    "ballons": {
+      "productIdentifier": 13,
+      "shortName": "ballons",
+      "name": "Ballons",
+      "description": "A set of ballons",
+      "price": 2.99,
+      "salePrice": 0.0,
+      "onHands": 10,
+      "productStatus": "SELLABLE",
+      "photoPath": "balloons.png"
+    },
+    "balloongas": {
+      "productIdentifier": 14,
+      "shortName": "balloongas",
+      "name": "A container of helium",
+      "description": "a place for helium which you put in ballons",
+      "price": 49.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "heliumtank.png"
+    },
+    "case": {
+      "productIdentifier": 24,
+      "shortName": "case",
+      "name": "Corsair 1000d",
+      "description": "The huge monster they call a case.",
+      "price": 559.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "case.png"
+    },
+    "footsocks": {
+      "productIdentifier": 18,
+      "shortName": "footsocks",
+      "name": "Foot Socks",
+      "description": "A sock that let your toes breathe",
+      "price": 7.99,
+      "salePrice": 0.0,
+      "onHands": 250,
+      "productStatus": "SELLABLE",
+      "photoPath": "socks.png"
+    },
+    "glasses": {
+      "productIdentifier": 2,
+      "shortName": "glasses",
+      "name": "A pair of glasses",
+      "description": "Someone\u0027s glasses",
+      "price": 10.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "glasses.png"
+    },
+    "gloves": {
+      "productIdentifier": 11,
+      "shortName": "gloves",
+      "name": "A pair of gloves",
+      "description": "We stole these from Alex B.",
+      "price": 14.99,
+      "salePrice": 0.0,
+      "onHands": 4,
+      "productStatus": "SELLABLE",
+      "photoPath": "gloves.png"
+    },
+    "gpu": {
+      "productIdentifier": 25,
+      "shortName": "gpu",
+      "name": "ASUS ROG STRIX GeForce RTX 2080TI",
+      "description": "A overclocked GPU",
+      "price": 1299.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "gpu.png"
+    },
+    "hairgel": {
+      "productIdentifier": 7,
+      "shortName": "hairgel",
+      "name": "Hair Gel",
+      "description": "Not so name brand hair gel",
+      "price": 7.99,
+      "salePrice": 0.0,
+      "onHands": 50,
+      "productStatus": "SELLABLE",
+      "photoPath": "hairgel.png"
+    },
+    "laptop": {
+      "productIdentifier": 3,
+      "shortName": "laptop",
+      "name": "EJs new laptop",
+      "description": "The laptop EJ should\u0027ve bought",
+      "price": 499.99,
+      "salePrice": 0.0,
+      "onHands": 2,
+      "productStatus": "SELLABLE",
+      "photoPath": "laptop.png"
+    },
+    "lotion": {
+      "productIdentifier": 17,
+      "shortName": "lotion",
+      "name": "A bottle of Lotion",
+      "description": "Everyone needs lotion sometimes....",
+      "price": 4.99,
+      "salePrice": 0.0,
+      "onHands": 1000,
+      "productStatus": "SELLABLE",
+      "photoPath": "lotion.png"
+    },
+    "mansion": {
+      "productIdentifier": 12,
+      "shortName": "mansion",
+      "name": "A huge mansion",
+      "description": "A mansion in the place of your dreams",
+      "price": 999999.99,
+      "salePrice": 0.0,
+      "onHands": 1,
+      "productStatus": "SELLABLE",
+      "photoPath": "mansion.png"
+    },
+    "motherboard": {
+      "productIdentifier": 22,
+      "shortName": "motherboard",
+      "name": "Asus Zenith II Extreme Alpha",
+      "description": "The best motherboard for the threadripper platform",
+      "price": 899.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "motherboard.png"
+    },
+    "mouse": {
+      "productIdentifier": 4,
+      "shortName": "mouse",
+      "name": "Mouse",
+      "description": "A computer mouse we stole from CSE248",
+      "price": 29.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "mouse.png"
+    },
+    "nailpolish": {
+      "productIdentifier": 8,
+      "shortName": "nailpolish",
+      "name": "Nail Polish",
+      "description": "A nail polish set",
+      "price": 9.99,
+      "salePrice": 0.0,
+      "onHands": 100,
+      "productStatus": "SELLABLE",
+      "photoPath": "nailpolish.png"
+    },
+    "playingcards": {
+      "productIdentifier": 1,
+      "shortName": "playingcards",
+      "name": "Playing Cards",
+      "description": "A deck of playing cards",
+      "price": 4.99,
+      "salePrice": 0.0,
+      "onHands": 100,
+      "productStatus": "SELLABLE",
+      "photoPath": "playingcards.png"
+    },
+    "processor": {
+      "productIdentifier": 21,
+      "shortName": "processor",
+      "name": "AMD Threadripper 3990x",
+      "description": "A computer processor with 128 threads!",
+      "price": 3999.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "processor.png"
+    },
+    "ram": {
+      "productIdentifier": 23,
+      "shortName": "ram",
+      "name": "CORSAIR Dominator Platinum RGB 128GB",
+      "description": "DDR4 SDRAM DDR4 3200 (8 x 16GB)",
+      "price": 999.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "ram.png"
+    },
+    "shoppingcart": {
+      "productIdentifier": 19,
+      "shortName": "shoppingcart",
+      "name": "Golden Shopping Cart",
+      "description": "A golden Shopping Cart",
+      "price": 1999.99,
+      "salePrice": 0.0,
+      "onHands": 2,
+      "productStatus": "SELLABLE",
+      "photoPath": "goldenshoppingcart.png"
+    },
+    "soup": {
+      "productIdentifier": 5,
+      "shortName": "soup",
+      "name": "Bar of soup",
+      "description": "Don\u0027t drop it!",
+      "price": 2.99,
+      "salePrice": 0.0,
+      "onHands": 50,
+      "productStatus": "SELLABLE",
+      "photoPath": "soap.png"
+    },
+    "sunglasses": {
+      "productIdentifier": 15,
+      "shortName": "sunglasses",
+      "name": "A nice pair of sunglasses",
+      "description": "Found them in the toilet",
+      "price": 19.99,
+      "salePrice": 0.0,
+      "onHands": 5,
+      "productStatus": "SELLABLE",
+      "photoPath": "sunglasses.png"
+    },
+    "tissues": {
+      "productIdentifier": 16,
+      "shortName": "tissues",
+      "name": "A box of tissues",
+      "description": "Everyone needs tissues!",
+      "price": 2.99,
+      "salePrice": 0.0,
+      "onHands": 1000,
+      "productStatus": "SELLABLE",
+      "photoPath": "tissues.png"
+    },
+    "toothbrush": {
+      "productIdentifier": 9,
+      "shortName": "toothbrush",
+      "name": "Toothbrush",
+      "description": "A toothbrush",
+      "price": 1.99,
+      "salePrice": 0.0,
+      "onHands": 100,
+      "productStatus": "SELLABLE",
+      "photoPath": "toothbrush.png"
+    },
+    "toothpaste": {
+      "productIdentifier": 10,
+      "shortName": "toothpaste",
+      "name": "Toothpaste",
+      "description": "A box of toothpaste",
+      "price": 2.99,
+      "salePrice": 0.0,
+      "onHands": 100,
+      "productStatus": "SELLABLE",
+      "photoPath": "toothpaste.png"
+    },
+    "umldiagram": {
+      "productIdentifier": 20,
+      "shortName": "umldiagram",
+      "name": "A pack of UML diagrams",
+      "description": "Designed for shopping cart projects",
+      "price": 74.99,
+      "salePrice": 0.0,
+      "onHands": 30,
+      "productStatus": "SELLABLE",
+      "photoPath": "umldigrams.jpg"
+    },
+    "vinnyslipstick": {
+      "productIdentifier": 0,
+      "shortName": "vinnyslipstick",
+      "name": "Vinny\u0027s Lipstick",
+      "description": "The product that started it all",
+      "price": 49.99,
+      "salePrice": 0.0,
+      "onHands": 100,
+      "productStatus": "SELLABLE",
+      "photoPath": "lipstick.png"
+    },
+    "waterbottle": {
+      "productIdentifier": 6,
+      "shortName": "waterbottle",
+      "name": "A unlabeled water bottle",
+      "description": "Who knows what\u0027s in it!",
+      "price": 4.99,
+      "salePrice": 0.0,
+      "onHands": 75,
+      "productStatus": "SELLABLE",
+      "photoPath": "waterbottle.png"
+    }
+  }
+}

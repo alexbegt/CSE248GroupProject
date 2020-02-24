@@ -14,6 +14,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
@@ -72,6 +73,7 @@ public class ShoppingCart extends Application {
     primaryStage.show();
 
     primaryStage.getScene().getWindow().addEventFilter(WindowEvent.WINDOW_CLOSE_REQUEST, this::closeWindowEvent);
+    primaryStage.getIcons().add(new Image("/assets/vaj/shoppingcart/images/icon.jpg"));
 
     FileHelper.loadAllDatabases(this, "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
   }

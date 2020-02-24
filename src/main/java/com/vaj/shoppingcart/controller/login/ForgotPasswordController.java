@@ -23,6 +23,8 @@ public class ForgotPasswordController extends GenericController implements Initi
   @FXML
   private Label lblErrors;
   @FXML
+  private Label lblNewPassword;
+  @FXML
   private Button btnSubmit;
   @FXML
   private Button btnCancel;
@@ -56,6 +58,7 @@ public class ForgotPasswordController extends GenericController implements Initi
           break;
         case SUCCESS:
           this.setErrorText(Color.GREEN, "Your new Password is: " + forgotPassword.getValue());
+          lblNewPassword.setText(forgotPassword.getValue());
           AccountHelper.createDialog("Your new Password is: " + forgotPassword.getValue(), "Forgot Password");
           returnToLogin(event);
           break;

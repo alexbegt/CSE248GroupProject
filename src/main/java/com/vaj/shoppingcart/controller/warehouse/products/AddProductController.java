@@ -11,6 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -40,6 +43,9 @@ public class AddProductController extends GenericController implements Initializ
 
   @FXML
   private Label lblErrors;
+
+  @FXML
+  private ImageView productImage;
 
   @FXML
   private ChoiceBox<ProductStatus> productStatus;
@@ -126,5 +132,23 @@ public class AddProductController extends GenericController implements Initializ
     lblErrors.setTextFill(color);
     lblErrors.setText(text);
     System.out.println("Add Product: " + text);
+  }
+
+  @FXML
+  public void userTyped(KeyEvent event) {
+    String text = txtPhotoPath.getText();
+
+    Image image = null;
+
+    if (!text.equalsIgnoreCase("")) {
+      try {
+        image = new Image("/assets/vaj/shoppingcart/images/" + text);
+      } catch (Exception e) {
+        image = new Image("/assets/vaj/shoppingcart/images/missing_image.png");
+      }
+
+      if (image != null)
+        productImage.setImage(image);
+    }
   }
 }

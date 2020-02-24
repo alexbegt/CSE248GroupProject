@@ -14,6 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -40,12 +42,40 @@ public class ViewOrEditProductsController extends GenericController implements I
   private TableColumn<ProductTable, String> productShortName;
 
   @FXML
+  private ImageView productImage;
+
+  @FXML
+  private Label txtDescription;
+
+  @FXML
   private Button btnSubmit;
   @FXML
   private Button btnCancel;
 
   @FXML
   private Label lblErrors;
+
+  @FXML
+  void handleClickingOnTable(MouseEvent event) {
+    ProductTable selectedProduct = products.getSelectionModel().getSelectedItem();
+    if (selectedProduct != null) {
+      Product product = ShoppingCart.getInstance().getProductDatabase().getProduct(selectedProduct.getProductShortName());
+      if (product != null) {
+        txtDescription.setText(product.getDescription());
+
+        Image image = null;
+
+        try {
+          image = new Image("/assets/vaj/shoppingcart/images/" + product.getPhotoPath());
+        } catch (Exception e) {
+          image = new Image("/assets/vaj/shoppingcart/images/missing_image.png");
+        }
+
+        if (image != null)
+          productImage.setImage(image);
+      }
+    }
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {

@@ -8,36 +8,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.home.OrderHistoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="619.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vaj.shoppingcart.controller.home.OrderHistoryController">
    <children>
-      <AnchorPane prefHeight="76.0" prefWidth="591.0" style="-fx-background-color: #000000;">
+      <AnchorPane prefHeight="76.0" prefWidth="619.0" style="-fx-background-color: #000000;">
          <children>
-            <Label alignment="CENTER" layoutY="27.0" prefHeight="23.0" prefWidth="600.0" text="Shopping Cart: Order History" textFill="WHITE">
+            <Label alignment="CENTER" layoutY="27.0" prefHeight="23.0" prefWidth="619.0" text="Shopping Cart: Order History" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Pane layoutY="76.0" prefHeight="407.0" prefWidth="600.0">
+      <Pane layoutY="76.0" prefHeight="407.0" prefWidth="619.0">
          <children>
-            <TableView fx:id="orders" layoutX="16.0" layoutY="44.0" prefHeight="274.0" prefWidth="569.0" stylesheets="@../styling/shopping_cart_styling.css">
+            <TableView fx:id="orders" layoutX="16.0" layoutY="44.0" prefHeight="274.0" prefWidth="591.0" stylesheets="@../styling/shopping_cart_styling.css">
                <columns>
-                  <TableColumn fx:id="orderNumber" editable="false" prefWidth="97.0" resizable="false" sortType="DESCENDING" text="Order Number" />
-                  <TableColumn fx:id="invoiceNumber" editable="false" prefWidth="103.0" resizable="false" text="Invoice Number" />
-                  <TableColumn fx:id="subTotal" editable="false" prefWidth="134.0" resizable="false" text="Sub Total" />
-                  <TableColumn fx:id="tax" editable="false" prefWidth="114.0" resizable="false" text="Tax" />
-                  <TableColumn fx:id="total" editable="false" prefWidth="120.0" resizable="false" text="Total" />
+                  <TableColumn fx:id="orderNumber" editable="false" prefWidth="111.0" resizable="false" sortType="DESCENDING" text="Order Number" />
+                  <TableColumn fx:id="invoiceNumber" editable="false" prefWidth="114.0" resizable="false" text="Invoice Number" />
+                  <TableColumn fx:id="subTotal" editable="false" prefWidth="131.0" resizable="false" text="Sub Total" />
+                  <TableColumn fx:id="tax" editable="false" prefWidth="115.0" resizable="false" text="Tax" />
+                  <TableColumn fx:id="total" editable="false" prefWidth="119.0" resizable="false" text="Total" />
                </columns>
             </TableView>
-            <Label alignment="CENTER" layoutX="74.0" layoutY="14.0" prefHeight="23.0" prefWidth="454.0" text="Select an order below to view it's invoice:">
+            <Label alignment="CENTER" layoutX="74.0" layoutY="14.0" prefHeight="23.0" prefWidth="476.0" text="Select an order below to view it's invoice:">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btnSubmit" layoutX="386.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="View Invoice" />
+            <Button fx:id="btnSubmit" layoutX="421.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#handleSubmit" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="View Invoice" />
             <Button fx:id="btnCancel" layoutX="16.0" layoutY="362.0" mnemonicParsing="false" onMouseClicked="#handleCancel" prefHeight="34.0" prefWidth="184.0" stylesheets="@../styling/shopping_cart_styling.css" text="Cancel" />
-            <Label fx:id="lblErrors" alignment="CENTER" layoutX="16.0" layoutY="324.0" prefHeight="34.0" prefWidth="569.0" textFill="#ff6354">
+            <Label fx:id="lblErrors" alignment="CENTER" layoutX="16.0" layoutY="324.0" prefHeight="34.0" prefWidth="591.0" textFill="#ff6354">
                <font>
                   <Font name="Segoe UI" size="18.0" />
                </font>

@@ -75,7 +75,7 @@ public class Home {
     this.getShoppingCart().getOrderDatabase().addOrder(order);
     this.getCurrentUserLoggedIn().addOrderToHistory(order.getOrderNumber());
 
-    createInvoice();
+    this.createInvoice();
   }
 
   private void createInvoice() {

@@ -2,6 +2,7 @@ package com.vaj.shoppingcart.controller.warehouse;
 
 import com.vaj.shoppingcart.ShoppingCart;
 import com.vaj.shoppingcart.controller.GenericController;
+import com.vaj.shoppingcart.helper.FileHelper;
 import com.vaj.shoppingcart.model.home.Home;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,11 @@ public class AdminPanelController extends GenericController {
   private Button btnReturnToHome;
   @FXML
   private Button btnViewFinancials;
+
+  @FXML
+  private Button btnLoadDatabase;
+  @FXML
+  private Button btnSaveDatabase;
 
   /**
    * Sets the data to be shown on the display.
@@ -126,5 +132,15 @@ public class AdminPanelController extends GenericController {
     } catch (IOException ex) {
       System.err.println(ex.getMessage());
     }
+  }
+
+  @FXML
+  void handleSaveDatabase(MouseEvent event) {
+    FileHelper.saveAllDatabases(ShoppingCart.getInstance(), "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
+  }
+
+  @FXML
+  void handleLoadDatabase(MouseEvent event) {
+    FileHelper.loadAllDatabases(ShoppingCart.getInstance(), "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
   }
 }
