@@ -13,6 +13,7 @@ public class User {
   private String password;
   private String email;
   private ArrayList<Integer> orderHistory;
+  private ArrayList<Integer> invoiceHistory;
   private Cart cart;
   private int currentOrderNumber;
   private int currentInvoiceNumber;
@@ -28,6 +29,7 @@ public class User {
     this.password = passwordIn;
     this.email = emailIn;
     this.orderHistory = new ArrayList<Integer>();
+    this.invoiceHistory = new ArrayList<Integer>();
     this.cart = new Cart();
     this.accountStatus = AccountStatus.ACTIVE;
     this.accountType = accountTypeIn;
@@ -127,6 +129,15 @@ public class User {
   }
 
   /**
+   * Adds an order number to the order history.
+   *
+   * @param currentOrderNumber the new order number.
+   */
+  public void addOrderToHistory(Integer currentOrderNumber) {
+    this.orderHistory.add(currentOrderNumber);
+  }
+
+  /**
    * Sets the user's order history to the new order history.
    *
    * @param orderHistoryIn the order history.
@@ -142,6 +153,33 @@ public class User {
    */
   public ArrayList<Integer> getOrderHistory() {
     return this.orderHistory;
+  }
+
+  /**
+   * Adds an invoice number to the order history.
+   *
+   * @param currentInvoiceNumber the new order number.
+   */
+  public void addInvoiceToHistory(Integer currentInvoiceNumber) {
+    this.invoiceHistory.add(currentInvoiceNumber);
+  }
+
+  /**
+   * Sets the user's order history to the new order history.
+   *
+   * @param invoiceHistoryIn the order history.
+   */
+  public void setInvoiceHistory(ArrayList<Integer> invoiceHistoryIn) {
+    this.invoiceHistory = invoiceHistoryIn;
+  }
+
+  /**
+   * Gets the order history of the account
+   *
+   * @return The order history.
+   */
+  public ArrayList<Integer> getInvoiceHistory() {
+    return this.invoiceHistory;
   }
 
   /**

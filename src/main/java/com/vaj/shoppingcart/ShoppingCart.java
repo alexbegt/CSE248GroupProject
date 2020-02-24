@@ -5,6 +5,7 @@ import com.vaj.shoppingcart.model.database.InvoiceDatabase;
 import com.vaj.shoppingcart.model.database.OrderDatabase;
 import com.vaj.shoppingcart.model.database.ProductDatabase;
 import com.vaj.shoppingcart.model.database.UserDatabase;
+import com.vaj.shoppingcart.model.home.Home;
 import com.vaj.shoppingcart.model.login.LoginAndRegister;
 import com.vaj.shoppingcart.model.product.AddOrEditProduct;
 import com.vaj.shoppingcart.model.warehouse.Financials;
@@ -27,6 +28,7 @@ public class ShoppingCart extends Application {
   private final OrderDatabase orderDatabase;
   private final AddOrEditProduct addOrEditProduct;
   private final Financials financials;
+  private final Home home;
 
   public ShoppingCart() {
     instance = this;
@@ -38,6 +40,7 @@ public class ShoppingCart extends Application {
     this.orderDatabase = new OrderDatabase(this);
     this.addOrEditProduct = new AddOrEditProduct(this);
     this.financials = new Financials(this);
+    this.home = new Home(this);
   }
 
   /**
@@ -144,6 +147,11 @@ public class ShoppingCart extends Application {
   public Financials getFinancials() {
     return this.financials;
   }
-  
-  
+
+  /*
+  * Returns the home class to be used with a controller.
+   */
+  public Home getHome() {
+    return home;
+  }
 }

@@ -19,4 +19,13 @@ public class ProductHelper {
       return false;
     }
   }
+
+  public static boolean validateQuantity(String onHands) {
+    try {
+      Integer.parseInt(onHands);
+      return true;
+    } catch (NumberFormatException ex) {
+      return false;
+    }
+  }
 }

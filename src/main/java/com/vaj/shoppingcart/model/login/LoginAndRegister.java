@@ -24,39 +24,37 @@ public class LoginAndRegister {
    *
    * @param username the entered username by the user
    * @param password the entered password by the user
-   *
    * @return LoginStatus the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, INCORRECT_PASSWORD, SUCCESS)
    */
-  public LoginStatus logUserIn(String username, String password) {
+  public Pair<LoginStatus, User> logUserIn(String username, String password) {
     if (!this.shoppingCart.getUserDatabase().findUser(username)) {
-      return LoginStatus.INVALID_USER;
+      return new Pair<>(LoginStatus.INVALID_USER, null);
     }
     if (this.shoppingCart.getUserDatabase().getUser(username).getAccountStatus() == AccountStatus.DISABLED) {
-      return LoginStatus.ACCOUNT_DISABLED;
+      return new Pair<>(LoginStatus.ACCOUNT_DISABLED, null);
     }
 
     User user = this.shoppingCart.getUserDatabase().getUser(username);
 
     if (user == null) {
-      return LoginStatus.INVALID_USER;
+      return new Pair<>(LoginStatus.INVALID_USER, null);
     }
     if (!AccountHelper.verifyPassword(password, user.getPassword(), user.getPasswordSalt())) {
-      return LoginStatus.INCORRECT_PASSWORD;
+      return new Pair<>(LoginStatus.INCORRECT_PASSWORD, null);
     }
 
-    return LoginStatus.SUCCESS;
+    return new Pair<>(LoginStatus.SUCCESS, user);
   }
 
   /**
    * Registers a user if it does not exist.
    *
-   * @param name the entered name by the user
-   * @param address the entered address by the user
-   * @param username the entered username by the user
-   * @param passwordIn the entered password by the user
+   * @param name              the entered name by the user
+   * @param address           the entered address by the user
+   * @param username          the entered username by the user
+   * @param passwordIn        the entered password by the user
    * @param confirmPasswordIn the entered password by the user
-   * @param email the entered email by the user
-   *
+   * @param email             the entered email by the user
    * @return RegisterStatus the status returned (INVALID_EMAIL, ERROR_GENERATING_PASSWORD_HASH, ERROR_ENCRYPTING_PASSWORD, PASSWORDS_DO_NOT_MATCH, USERNAME_IN_USE, EMAIL_IN_USE, SUCCESSFUL, ERROR)
    */
   public RegisterStatus registerUser(Name name, Address address, String username, String passwordIn, String confirmPasswordIn, String email) {
@@ -95,7 +93,6 @@ public class LoginAndRegister {
    * Resets the user's passwords
    *
    * @param username the entered username by the user
-   *
    * @return Pair<ResetStatus, String> the status returned (INVALID_EMAIL, ACCOUNT_DISABLED, INVALID_USER, ERROR_GENERATING_PASSWORD_SALT, ERROR_ENCRYPTING_PASSWORD, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotPassword(String username) {
@@ -130,7 +127,6 @@ public class LoginAndRegister {
    * Gets the user's username if its exists
    *
    * @param email the entered email by the user
-   *
    * @return Pair<ResetStatus, String> the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotUsername(String email) {
@@ -146,5 +142,51 @@ public class LoginAndRegister {
     }
 
     return new Pair<>(ResetStatus.SUCCESS, user.getUsername());
+  }
+
+  /**
+   * Registers a user if it does not exist.
+   *
+   * @param name              the entered name by the user
+   * @param address           the entered address by the user
+   * @param username          the entered username by the user
+   * @param passwordIn        the entered password by the user
+   * @param confirmPasswordIn the entered password by the user
+   * @param email             the entered email by the user
+   * @param accountStatus     the selected account status
+   * @param accountType       the selected account type
+   * @return RegisterStatus the status returned (INVALID_EMAIL, ERROR_GENERATING_PASSWORD_HASH, ERROR_ENCRYPTING_PASSWORD, PASSWORDS_DO_NOT_MATCH, USERNAME_IN_USE, EMAIL_IN_USE, SUCCESSFUL, ERROR)
+   */
+  public RegisterStatus registerUser(Name name, Address address, String username, String passwordIn, String confirmPasswordIn, String email, AccountStatus accountStatus, AccountType accountType) {
+    if (AccountHelper.validateEmail(email)) {
+      return RegisterStatus.INVALID_EMAIL;
+    }
+
+    Optional<String> passwordSalt = AccountHelper.generateRandomPasswordSalt();
+    if (passwordSalt.isEmpty()) {
+      return RegisterStatus.ERROR_GENERATING_PASSWORD_HASH;
+    }
+    Optional<String> password = AccountHelper.generateEncryptedPassword(passwordIn, passwordSalt.get());
+    if (password.isEmpty()) {
+      return RegisterStatus.ERROR_ENCRYPTING_PASSWORD;
+    }
+    if (!AccountHelper.verifyPassword(confirmPasswordIn, password.get(), passwordSalt.get())) {
+      return RegisterStatus.PASSWORDS_DO_NOT_MATCH;
+    }
+    if (this.shoppingCart.getUserDatabase().findUser(username)) {
+      return RegisterStatus.USERNAME_IN_USE;
+    }
+    if (this.shoppingCart.getUserDatabase().findAnyUserWithEmail(email)) {
+      return RegisterStatus.EMAIL_IN_USE;
+    }
+
+    User user = new User(name, address, username, password.get(), passwordSalt.get(), email, accountType);
+    user.setAccountStatus(accountStatus);
+
+    if (this.shoppingCart.getUserDatabase().addUser(user)) {
+      return RegisterStatus.SUCCESSFUL;
+    } else {
+      return RegisterStatus.ERROR;
+    }
   }
 }

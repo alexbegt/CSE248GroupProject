@@ -1,6 +1,9 @@
 package com.vaj.shoppingcart.controller.login;
 
 import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.model.account.User;
+import com.vaj.shoppingcart.model.login.LoginStatus;
+import com.vaj.shoppingcart.model.login.ResetStatus;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,6 +39,11 @@ public class LoginController implements Initializable {
   @FXML
   private Label lblErrors;
 
+  /**
+   * Handles when a user presses the forgot password button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleForgotPassword(MouseEvent event) {
     try {
@@ -52,6 +61,11 @@ public class LoginController implements Initializable {
     }
   }
 
+  /**
+   * Handles when a user presses the forgot username button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleForgotUsername(MouseEvent event) {
     try {
@@ -69,6 +83,11 @@ public class LoginController implements Initializable {
     }
   }
 
+  /**
+   * Handles when a user presses the sign in button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleSignIn(MouseEvent event) {
     String username = txtUsername.getText();
@@ -77,9 +96,24 @@ public class LoginController implements Initializable {
     if (username.isEmpty() || password.isEmpty()) {
       this.setErrorText(Color.TOMATO, "Empty credentials");
     } else {
-      switch (ShoppingCart.getInstance().getLoginAndRegister().logUserIn(username, password)) {
+      Pair<LoginStatus, User> logUserIn = ShoppingCart.getInstance().getLoginAndRegister().logUserIn(username, password);
+      switch (logUserIn.getKey()) {
         case SUCCESS:
           this.setErrorText(Color.GREEN, "Successful! Logging in...");
+          ShoppingCart.getInstance().getHome().setCurrentUserLoggedIn(logUserIn.getValue());
+          try {
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            stage.close();
+
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/assets/vaj/shoppingcart/home/home.fxml")));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+
+          } catch (IOException ex) {
+            System.err.println("Login: " + ex.getMessage());
+          }
           break;
         case INVALID_USER:
           this.setErrorText(Color.TOMATO, "Invalid username.");
@@ -97,6 +131,11 @@ public class LoginController implements Initializable {
     }
   }
 
+  /**
+   * Handles when a user presses the sign up button.
+   *
+   * @param event the mouse event
+   */
   @FXML
   void handleSignUp(MouseEvent event) {
     try {
@@ -127,6 +166,12 @@ public class LoginController implements Initializable {
 
   }
 
+  /**
+   * Sets the text of the label on the screen
+   *
+   * @param color the color.
+   * @param text  the actual text
+   */
   private void setErrorText(Color color, String text) {
     lblErrors.setTextFill(color);
     lblErrors.setText(text);

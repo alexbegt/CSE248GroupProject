@@ -1,8 +1,8 @@
 package com.vaj.shoppingcart.controller.invoice;
 
 import com.vaj.shoppingcart.ShoppingCart;
+import com.vaj.shoppingcart.controller.GenericController;
 import com.vaj.shoppingcart.helper.AccountHelper;
-import com.vaj.shoppingcart.helper.FileHelper;
 import com.vaj.shoppingcart.model.account.User;
 import com.vaj.shoppingcart.model.order.Invoice;
 import com.vaj.shoppingcart.model.order.InvoiceTable;
@@ -11,7 +11,6 @@ import com.vaj.shoppingcart.model.product.Product;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class InvoiceController implements Initializable {
+public class InvoiceController extends GenericController implements Initializable {
 
   private static DecimalFormat df = new DecimalFormat("0.00");
 
@@ -44,6 +43,7 @@ public class InvoiceController implements Initializable {
   private Label txtTax;
   @FXML
   private Label txtTotal;
+
   @FXML
   private TableView<InvoiceTable> cartProducts;
   @FXML
@@ -62,48 +62,16 @@ public class InvoiceController implements Initializable {
 
   @FXML
   void handleClose(MouseEvent event) {
-    FileHelper.loadAllDatabases(ShoppingCart.getInstance(), "files/users.json", "files/products.json", "files/orders.json", "files/invoices.json");
-
-    try {
-      Node node = (Node) event.getSource();
-      Stage stage = (Stage) node.getScene().getWindow();
-      stage.close();
-
-      FXMLLoader loader = new FXMLLoader(getClass().getResource("/assets/vaj/shoppingcart/invoice/invoice.fxml"));
-      Scene scene = new Scene(loader.load());
-      stage.setScene(scene);
-      stage.setResizable(false);
-
-      User user = ShoppingCart.getInstance().getUserDatabase().getUser("Test_Bot");
-      Invoice invoice = ShoppingCart.getInstance().getInvoiceDatabase().getInvoice(user.getCurrentInvoiceNumber());
-
-      InvoiceController controller = loader.<InvoiceController>getController();
-      controller.initializeData(invoice, stage);
-
-      stage.show();
-    } catch (IOException ex) {
-      System.err.println(ex.getMessage());
-    }
+    switchToHome(event);
   }
 
   public void initializeData(Invoice invoice, Stage stage) {
     User user = ShoppingCart.getInstance().getUserDatabase().getUser(invoice.getUserName());
-    Order order = ShoppingCart.getInstance().getOrderDatabase().getOrder(user.getCurrentOrderNumber());
+    Order order = ShoppingCart.getInstance().getOrderDatabase().getOrder(invoice.getOrderNumber());
 
     if (user == null || order == null || order.isEmpty() || !order.getUsername().equalsIgnoreCase(user.getUsername())) {
       AccountHelper.createDialog("Unable to initialize data... Returning home.", "Invoice Error");
-      try {
-        stage.close();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/assets/vaj/shoppingcart/login/login.fxml"));
-        Scene scene = new Scene(loader.load());
-        stage.setScene(scene);
-        stage.setResizable(false);
-
-        stage.show();
-      } catch (IOException ex) {
-        System.err.println(ex.getMessage());
-      }
+      this.returnToHome(stage);
     } else {
       txtDear.setText(txtDear.getText().replace("%s", user.getName().getFullName()));
       txtOrderNumber.setText(txtOrderNumber.getText().replace("%s", String.valueOf(invoice.getOrderNumber())));
