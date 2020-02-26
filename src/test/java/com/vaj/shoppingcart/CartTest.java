@@ -1,6 +1,7 @@
 package com.vaj.shoppingcart;
 
 import com.vaj.shoppingcart.model.product.ProductTable;
+import javafx.geometry.VerticalDirection;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.testfx.framework.junit5.ApplicationTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CartTest extends ApplicationTest {
@@ -176,10 +178,8 @@ public class CartTest extends ApplicationTest {
   @Test
   @Order(10)
   void testSelectAnItemAndAddIt() {
-    TableView<ProductTable> tableView = lookup("#products").queryTableView();
     TextField quantityField = (TextField) lookup("#txtQuantity").queryTextInputControl();
     Button addToCart = lookup("#btnSubmit").queryButton();
-
 
     Node row = lookup(".table-row-cell").nth(0).query();
     clickOn(row);
@@ -198,17 +198,68 @@ public class CartTest extends ApplicationTest {
 
   @Test
   @Order(12)
-  void testCheckout() {
+  void testCheckoutAndViewingOrderHistory() {
     Button checkout = lookup("#btnCheckout").queryButton();
     clickOn(checkout);
+
+    sleep(1000);
+
+    Button close = lookup("#btnClose").queryButton();
+    clickOn(close);
+
+    Button viewOrderHistory = lookup("#btnOrderHistory").queryButton();
+
+    clickOn(viewOrderHistory);
+
+    Node row = lookup(".table-row-cell").nth(0).query();
+    clickOn(row);
+
+    Button viewInvoice = lookup("#btnSubmit").queryButton();
+    clickOn(viewInvoice);
+
+    sleep(1000);
+
+    close = lookup("#btnClose").queryButton();
+    clickOn(close);
   }
 
   @Test
-  @Order(13)
-  void testClosing() {
-    sleep(1000);
-    Button checkout = lookup("#btnClose").queryButton();
+  @Order(14)
+  void testShopAgain() {
+    Button shopButton = lookup("#btnShop").queryButton();
+    clickOn(shopButton);
+
+    TableView<ProductTable> products = lookup("#products").queryTableView();
+    for (int i = 0; i <= products.getItems().size() - 1; i++) {
+      ProductTable product = products.getItems().get(i);
+      handleShoppingTest(i, product.getProductQuantity());
+    }
+
+    Button switchToCart = lookup("#btnSwitchToCart").queryButton();
+    clickOn(switchToCart);
+
+    Button checkout = lookup("#btnCheckout").queryButton();
     clickOn(checkout);
+
+    sleep(10000);
+
+    Button close = lookup("#btnClose").queryButton();
+    clickOn(close);
+  }
+
+  void handleShoppingTest(int index, int onHands) {
+    TableView<ProductTable> products = lookup("#products").queryTableView();
+    products.scrollTo(index - 1);
+
+    TextField quantityField = (TextField) lookup("#txtQuantity").queryTextInputControl();
+    Button addToCart = lookup("#btnSubmit").queryButton();
+
+    products.getSelectionModel().clearAndSelect(index);
+
+    clickOn(quantityField);
+    write(String.valueOf(onHands));
+    clickOn(addToCart);
+
   }
 
   @Override

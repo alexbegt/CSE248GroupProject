@@ -93,7 +93,7 @@ public class LoginAndRegister {
    * Resets the user's passwords
    *
    * @param username the entered username by the user
-   * @return Pair<ResetStatus, String> the status returned (INVALID_EMAIL, ACCOUNT_DISABLED, INVALID_USER, ERROR_GENERATING_PASSWORD_SALT, ERROR_ENCRYPTING_PASSWORD, SUCCESS) along with the username.
+   * @return the status returned (INVALID_EMAIL, ACCOUNT_DISABLED, INVALID_USER, ERROR_GENERATING_PASSWORD_SALT, ERROR_ENCRYPTING_PASSWORD, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotPassword(String username) {
     if (!this.shoppingCart.getUserDatabase().findUser(username)) {
@@ -127,7 +127,7 @@ public class LoginAndRegister {
    * Gets the user's username if its exists
    *
    * @param email the entered email by the user
-   * @return Pair<ResetStatus, String> the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, SUCCESS) along with the username.
+   * @return the status returned (INVALID_USER, ACCOUNT_DISABLED, INVALID_USER, SUCCESS) along with the username.
    */
   public Pair<ResetStatus, String> forgotUsername(String email) {
     if (!this.shoppingCart.getUserDatabase().findAnyUserWithEmail(email)) {

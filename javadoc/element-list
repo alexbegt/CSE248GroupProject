@@ -1,0 +1,16 @@
+com.vaj.shoppingcart
+com.vaj.shoppingcart.controller
+com.vaj.shoppingcart.controller.home
+com.vaj.shoppingcart.controller.invoice
+com.vaj.shoppingcart.controller.login
+com.vaj.shoppingcart.controller.warehouse
+com.vaj.shoppingcart.controller.warehouse.products
+com.vaj.shoppingcart.controller.warehouse.users
+com.vaj.shoppingcart.helper
+com.vaj.shoppingcart.model.account
+com.vaj.shoppingcart.model.database
+com.vaj.shoppingcart.model.home
+com.vaj.shoppingcart.model.login
+com.vaj.shoppingcart.model.order
+com.vaj.shoppingcart.model.product
+com.vaj.shoppingcart.model.warehouse

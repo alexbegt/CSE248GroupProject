@@ -78,7 +78,8 @@ public class InvoiceDatabase {
   
   /**
    * retrieves invoiceTreeMap
-   * 
+   *
+   * @return the invoice tree map
    */
   public TreeMap<Integer, Invoice> getInvoiceTreeMap() {
     return invoiceTreeMap;

@@ -194,7 +194,7 @@ public class User {
   /**
    * Gets the current cart linked to the user
    *
-   * @returns the users current cart.
+   * @return the users current cart
    */
   public Cart getCart() {
     return this.cart;

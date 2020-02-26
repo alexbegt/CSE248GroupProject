@@ -74,6 +74,8 @@ public class Order {
 
   /**
    * sets the order status of the order
+   *
+   * @param orderStatus the order status in
    */
   public void setOrderStatus(OrderStatus orderStatus) {
     this.orderStatus = orderStatus;
@@ -90,6 +92,8 @@ public class Order {
 
   /**
    * sets products to products in cart
+   *
+   * @param products the product in
    */
   public void setProducts(HashMap<String, Integer> products) {
     this.cartProducts = products;
